@@ -9,7 +9,6 @@ import at.emreeocn.rpgcore.scoreboard.RPGScoreboard;
 import at.emreeocn.rpgcore.task.Task;
 
 public class TaskFinishedEvent extends Event {
-
 	private Player player;
 	private Task task;
 	
