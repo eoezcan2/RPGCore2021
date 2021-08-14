@@ -1,0 +1,124 @@
+name: RPGCore
+author: Emreeocn
+version: 1.0
+api-version: 1.13
+main: at.emreeocn.rpgcore.main.Main
+commands:
+  modify:
+  spawn:
+  coins:
+  pay:
+  server:
+  invsee:
+    description: Lets you see an inventory of an other player
+    usage: /invsee <player>
+    permission: mephistogames.admin.invsee
+  teleport:
+    description: Lets you teleport to an player and teleport an player to another Player
+    usage: /teleport <player> [other player]
+    aliases: [tp]
+    permission: mephistogames.admin.teleport
+  teleportall:
+    description: Lets you teleport all players to your location
+    usage: /teleportall
+    aliases: [tpall]
+    permission: mephistogames.admin.teleportall
+  teleportat:
+    description: Lets you send an request for an teleport to an player, if he accepts it, you will be teleported to him.
+    usage: /teleportat <player> <accept|deny>
+    aliases: [tpa]
+    permission: mephistogames.player.teleportat
+  vanish:
+    description: Lets you vanish from other players
+    usage: /vanish
+    aliases: [v]
+    permission: mephistogames.admin.vanish
+  message:
+    description: Lets you message an other player on the server
+    usage: /message <player> <message>
+    aliases: [msg]
+    permission: mephistogames.player.message
+  home:
+    description: Lets you set a home
+    usage: /home <name|set|remove> [name]
+    aliases: [h]
+    permission: mephistogames.player.home
+  enderdragon:
+    description: Enderdragon commands
+    usage: /enderdragon <amount|stop|start>
+    aliases: [ender]
+    permission: mephistogames.enderdragon
+  flyspeed:
+    description: Lets you set your fly speed
+    usage: /flyspeed <speed>
+    aliases: [fs]
+    permission: mephistogames.player.flyspeed
+  trash:
+    description: Opens an empty inventory where you can put your trash
+    usage: /trash
+    aliases: [h0nd]
+    permission: mephistogames.player.trash
+  spawnmob:
+    description: Spawns an specific amount of an specific mob at the look direction of the player
+    usage: /spawnmob <name> <amount>
+    aliases: [sm]
+    permission: mephistogames.admin.spawnmob
+  task:
+    description: See a players current task statistics
+    usage: /task <player> [id] [true|false]
+    aliases: [aufgabe]
+    permission: mephistogames.admin.task
+  head:
+    description: Get a players head
+    usage: /head <player>
+    aliases: [kopf]
+    permission: mephistogames.admin.head
+  dungeon:
+    description: Dungeon Commands
+    usage: /dungeon <join|leave|set> <spawn> <id>
+    aliases: [dun]
+    permission: mephistogames.player.dungeon
+  dragonraid:
+    description: Dragon Raid Command
+    usage: /dragonraid <get>
+    aliases: [dr]
+    permission: mephistogames.admin.dragonraid
+  mobs:
+    description: Mobs Command
+    usage: /mobs <name> [amount]
+    aliases: [mops]
+    permission: mephistogames.admin.mobs
+
+permissions:
+  mephistogames.admin.invsee:
+    description: Permission for invsee command
+  mephistogames.admin.teleport:
+    description: Permission for teleport command
+  mephistogames.admin.teleportall:
+    description: Permission for teleportall command
+  mephistogames.player.teleportat:
+    description: Permission for teleportat command
+  mephistogames.admin.vanish:
+    description: Permission for vanish command
+  mephistogames.admin.vanish.show:
+    description: Permission for admins, that admins can see other admins
+  mephistogames.player.message:
+    description: Permission for message command
+  mephistogames.player.home:
+    description: Permission for home command
+  mephistogames.enderdragon:
+    description: Permission for enderdragon command
+  mephistogames.player.flyspeed:
+    description: Permission for flyspeed command
+  mephistogames.player.trash:
+    description: Permission for trash command
+  mephistogames.admin.spawnmob:
+    description: Permission for spawnmob command
+  mephistogames.admin.task:
+    description: Permission for task command
+  mephistogames.admin.head:
+    description: Permission for head command
+  mephistogames.dungeon.player:
+    description: Permission for dungeon command
+  mephistogames.admin.mobs:
+    description: Permission for mobs command

@@ -1,0 +1,7 @@
+prefix: "&4[MephistoRPG] "
+sql:
+  database: "rpg"
+  host: "localhost"
+  username: "root"
+  password: "71gSupb6"
+  port: 3306
