@@ -20,11 +20,11 @@ public enum Task {
 	TELEPORT_FARMWORLD(2, "Unsere Farmwelt", "Betrete die Farmwelt.", new Reward(null, 50, 1, null)),
 	USE_SKILLPOINT(3, "Verschwende sie nicht!", "Gebe einen Skillpunkt aus.", new Reward(null, 50, 1, null)),
 	BREAK_OBSIDIAN_BLOCK(4, "Harter Brocken", "Baue einen Obsidianblock ab!", new Reward(obsidianPickaxe(), 300, 3, netherText())),
-	DIE(5, "Blut flieÃŸt...", "Sterbe einmal durch jegliche Art. Du hast nichts zu verlieren!", new Reward(null, 100, 1, null)),
+	DIE(5, "Blut fliesst...", "Sterbe einmal durch jegliche Art. Du hast nichts zu verlieren!", new Reward(null, 100, 1, null)),
 	TOUCH_ADMIN(6, "Goldener Finger", "Interagiere (Rechtsklick) einmal mit einem Admin", new Reward(goldIngot(9), 500, 6, null)),
 	PLOT_CLAIM(7, "Ein Stückchen Heimat", "Ergattere dir ein Grundstück (Command: /p auto oder /p claim)", new Reward(null, 50, 1, null)),
-	WITHER_SKELETON_HEAD(8, "Schwarze Knochen", "Töte ein Wither-Skelett und erhate seinen Kopf", new Reward(null, 500, 6, endText())),
-	PLOT_ENTER_OTHER(9, "Keine Vertrauensprobleme", "Betrete ein fremdes Grundstück", new Reward(null, 50, 1, null)),
+	WITHER_SKELETON_HEAD(8, "Schwarze Knochen", "Töte ein Wither-Skelett und erhalte seinen Kopf", new Reward(null, 500, 6, endText())),
+	MAKE_GROUP(9, "Gemeinsam sind wir stärker", "Mache eine Gruppe mit jemandem", new Reward(null, 50, 1, null)),
 	DIAMOND_CHESTPLATE(10, "Drip", "Crafte dir eine Diamant Brustplatte", new Reward(null, 100, 3, null)),
 	TELEPORT_NETHER(11, "Furchtlos durch die Hölle", "Betrete den Nether", new Reward(null, 50, 1, null)),
 	TELEPORT_CAVE(12, "Ressourcen ohne Ende!", "Betrete The Cave", new Reward(null, 50, 1, null)),
@@ -147,7 +147,7 @@ public enum Task {
 	private static ArrayList<String> plotSurvivalText() {
 		ArrayList<String> a = new ArrayList<String>();
 		
-		a.add("überlebenskampf freischalten");
+		a.add("Überlebenskampf freischalten");
 		
 		return a;
 	}

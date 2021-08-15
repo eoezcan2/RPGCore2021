@@ -1,6 +1,5 @@
 package at.emreeocn.rpgcore.listener;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EnderDragon;
@@ -18,14 +17,13 @@ import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.github.intellectualsites.plotsquared.bukkit.events.PlayerClaimPlotEvent;
-import com.github.intellectualsites.plotsquared.bukkit.events.PlayerEnterPlotEvent;
 
-import at.emreeocn.rpgcore.events.TaskFinishedEvent;
-import at.emreeocn.rpgcore.util.Config;
-import at.emreeocn.rpgcore.util.Modify;
 import at.emreeocn.rpgcore.dragonraid.DragonRaidManager;
+import at.emreeocn.rpgcore.events.TaskFinishedEvent;
 import at.emreeocn.rpgcore.farmworld.Farmworld;
 import at.emreeocn.rpgcore.task.Task;
+import at.emreeocn.rpgcore.util.Config;
+import at.emreeocn.rpgcore.util.Modify;
 
 public class TaskListener implements Listener {
 	
@@ -63,16 +61,6 @@ public class TaskListener implements Listener {
 	@EventHandler
 	public void onPlotClaim(PlayerClaimPlotEvent e) {
 		new TaskFinishedEvent(e.getPlayer(), Task.PLOT_CLAIM);
-	}
-	
-	@SuppressWarnings("deprecation")
-	@EventHandler
-	public void onPlotEnter(PlayerEnterPlotEvent e) {
-		if(e.getPlot().hasOwner()) {
-			if(Bukkit.getPlayer(e.getPlot().getOwner()) != e.getPlayer()) {
-				new TaskFinishedEvent(e.getPlayer(), Task.PLOT_ENTER_OTHER);
-			}
-		}
 	}
 	
 	@EventHandler
