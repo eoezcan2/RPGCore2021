@@ -39,7 +39,7 @@ public class RPGScoreboard {
 			s1 = Farmworld.getType(player.getLocation()).getDisplayName();
 			
 		} else {
-			if(player.getLocation().getWorld() == Config.getSpawn().getWorld()) s1 = "Lobby";
+			if(player.getLocation().getWorld() == Config.getSpawn().getWorld()) s1 = "Stadt";
 			else if(player.getLocation().getWorld() == Config.getCitybuild().getWorld()) s1 = "Citybuild";
 			else {
 				s1 = player.getWorld().getName();
