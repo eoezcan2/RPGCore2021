@@ -8,6 +8,10 @@
 # IntelliJ
 out/
 
+# Eclipse
+org.eclipse.core.resources.prefs.settings
+org.eclipse.jdt.core.prefs.settings
+
 # Compiled class file
 *.class
 
