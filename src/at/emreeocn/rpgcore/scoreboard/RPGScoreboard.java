@@ -46,7 +46,7 @@ public class RPGScoreboard {
 			}
 		}
 		
-		obj.getScore("§f=>° §6§l" + s1).setScore(11);
+		obj.getScore("§f=> §6§l" + s1).setScore(11);
 	}
 	
 	public Scoreboard getScoreboard() {

@@ -24,7 +24,7 @@ public class PlotSurvivalListener implements Listener {
 	public void onEntityDamageByEntity(EntityDamageByEntityEvent e) {
 		if(e.getDamager() instanceof Player) {
 			Player player = (Player) e.getDamager();
-			if(PlotSurviveManager.isInserted(player))
+			if(PlotSurviveManager.isPlaying(player))
 				if(PlotSurviveManager.getPlotSurvive(e.getEntity()).getPlayer() != player)
 					e.setCancelled(true);
 		}
