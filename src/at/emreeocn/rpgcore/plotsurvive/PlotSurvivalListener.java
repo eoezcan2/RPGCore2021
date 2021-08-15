@@ -1,4 +1,4 @@
-package at.emreeocn.rpgcore.listener;
+package at.emreeocn.rpgcore.plotsurvive;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,8 +8,6 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
-
-import at.emreeocn.rpgcore.plotsurvive.PlotSurviveManager;
 
 public class PlotSurvivalListener implements Listener {
 

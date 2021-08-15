@@ -1,4 +1,4 @@
-package at.emreeocn.rpgcore.listener;
+package at.emreeocn.rpgcore.farmworld;
 
 import java.util.Collection;
 import java.util.Random;
@@ -23,7 +23,6 @@ import at.emreeocn.rpgcore.main.Main;
 import at.emreeocn.rpgcore.util.Config;
 import at.emreeocn.rpgcore.util.Modify;
 import at.emreeocn.rpgcore.coin.Money;
-import at.emreeocn.rpgcore.farmworld.Farmworld;
 import at.emreeocn.rpgcore.reward.Reward;
 
 public class FarmworldListener implements Listener {

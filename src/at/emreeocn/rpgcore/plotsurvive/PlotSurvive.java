@@ -33,7 +33,7 @@ public class PlotSurvive {
 	
 	public void start() {
 		PlotSurviveManager.getList().add(this);
-		player.sendTitle("§cüberlebenskampf", "§6Level " + this.level, 15, (20 * 3), 15);
+		player.sendTitle("§cÜberlebenskampf", "§6Level " + this.level, 15, (20 * 3), 15);
 		new Delay(1);
 		this.timer = new PlotSurviveTimer(this, 60);
 		spawnMobs();

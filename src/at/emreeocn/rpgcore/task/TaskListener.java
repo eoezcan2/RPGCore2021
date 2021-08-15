@@ -1,4 +1,4 @@
-package at.emreeocn.rpgcore.listener;
+package at.emreeocn.rpgcore.task;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
@@ -21,7 +21,6 @@ import com.github.intellectualsites.plotsquared.bukkit.events.PlayerClaimPlotEve
 import at.emreeocn.rpgcore.dragonraid.DragonRaidManager;
 import at.emreeocn.rpgcore.events.TaskFinishedEvent;
 import at.emreeocn.rpgcore.farmworld.Farmworld;
-import at.emreeocn.rpgcore.task.Task;
 import at.emreeocn.rpgcore.util.Config;
 import at.emreeocn.rpgcore.util.Modify;
 
