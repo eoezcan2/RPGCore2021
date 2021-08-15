@@ -15,6 +15,9 @@ public class Group {
 		this.setLeader(leader);
 		this.members = new ArrayList<Player>();
 		GroupManager.addGroup(this);
+		
+		// MESSAGE
+		sendMessage("§7Gruppe wurde erstellt");
 	}
 	
 	public void setGroupLeader(Player player) {
@@ -26,9 +29,11 @@ public class Group {
 	
 	public void invite(Player player) {
 		// ADD TO HASHMAP
+		GroupManager.getInvites().put(player, this);
 		
 		// SEND MESSAGE
 		sendMessage("§6" + player.getDisplayName() + " §7 wurde eingeladen");
+		player.sendMessage(msgPrefix + "§7Du wurdest von §6" + leader.getDisplayName() + " §7eingeladen");
 	}
 	
 	public void join(Player player, boolean invitation) {
@@ -62,9 +67,9 @@ public class Group {
 		GroupManager.removeGroup(this);
 	}
 	
-	public void sendMessage(Player player, String msg) {
+	public void sendMessage(Player from, String msg) {
 		for(Player p : members) {
-			p.sendMessage(msgPrefix + "§6" + player.getDisplayName() + " >> §7" + msg);
+			p.sendMessage(msgPrefix + "§6" + from.getDisplayName() + " >> §7" + msg);
 		}
 	}
 	

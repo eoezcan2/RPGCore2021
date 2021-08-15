@@ -28,6 +28,7 @@ import at.emreeocn.rpgcore.commands.TrashCommand;
 import at.emreeocn.rpgcore.commands.VanishCommand;
 import at.emreeocn.rpgcore.dungeon.DungeonManager;
 import at.emreeocn.rpgcore.farmworld.FarmworldListener;
+import at.emreeocn.rpgcore.group.GroupCommand;
 import at.emreeocn.rpgcore.group.GroupListener;
 import at.emreeocn.rpgcore.listener.CaveListener;
 import at.emreeocn.rpgcore.listener.DropListener;
@@ -112,6 +113,7 @@ public class Main extends JavaPlugin {
 		getCommand("head").setExecutor(new HeadCommand());
 //		getCommand("dungeon").setExecutor(new DungeonCommand());
 		getCommand("dragonraid").setExecutor(new DragonRaidCommand());
+		getCommand("group").setExecutor(new GroupCommand());
 		
 		/* HashMap */
 		Skill.initHashMap();

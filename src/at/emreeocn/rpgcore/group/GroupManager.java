@@ -29,6 +29,14 @@ public class GroupManager {
 		return false;
 	}
 	
+	public static String getList() {
+		String s = "";
+		for(Group g : groups) {
+			s += "§7- §2" + g.getLeader().getDisplayName() + "\n §7Mitglieder: §a" + g.getMembers().toString() + "\n";
+		}
+		return s;
+	}
+	
 	public static Group getGroup(Player player) {
 		for(Group g : groups)
 			if(g.getMembers().contains(player)) return g;

@@ -88,6 +88,11 @@ commands:
     usage: /mobs <name> [amount]
     aliases: [mops]
     permission: mephistogames.admin.mobs
+  group:
+    description: Group Command
+    usage: /group <create|invite|list|accept|deny|leave> [player]
+    aliases: [gruppe]
+    permission: mephistogames.player.group
 
 permissions:
   mephistogames.admin.invsee:
@@ -121,4 +126,6 @@ permissions:
   mephistogames.dungeon.player:
     description: Permission for dungeon command
   mephistogames.admin.mobs:
+    description: Permission for mobs command
+  mephistogames.player.group:
     description: Permission for mobs command
