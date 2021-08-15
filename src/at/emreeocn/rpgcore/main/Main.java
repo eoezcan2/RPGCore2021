@@ -28,6 +28,7 @@ import at.emreeocn.rpgcore.commands.TrashCommand;
 import at.emreeocn.rpgcore.commands.VanishCommand;
 import at.emreeocn.rpgcore.dungeon.DungeonManager;
 import at.emreeocn.rpgcore.farmworld.FarmworldListener;
+import at.emreeocn.rpgcore.group.GroupListener;
 import at.emreeocn.rpgcore.listener.CaveListener;
 import at.emreeocn.rpgcore.listener.DropListener;
 import at.emreeocn.rpgcore.listener.LobbyListener;
@@ -89,6 +90,7 @@ public class Main extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new LobbyListener(), this);
 		Bukkit.getPluginManager().registerEvents(new MenuListener(), this);
 		Bukkit.getPluginManager().registerEvents(new PlotSurvivalListener(), this);
+		Bukkit.getPluginManager().registerEvents(new GroupListener(), this);
 		
 		/* Command */
 		getCommand("spawn").setExecutor(new SpawnCommand());
