@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 public class Group {
 	
-	private static String msgPrefix = "§d[§5Group§d] ";
+	private static String msgPrefix = "§5[§dGroup§5] ";
 	
 	private Player leader;
 	private ArrayList<Player> members;
@@ -46,8 +46,8 @@ public class Group {
 		GroupManager.getInvites().put(player, this);
 		
 		// SEND MESSAGE
-		sendMessage("§6" + player.getDisplayName() + " §7 wurde eingeladen");
-		player.sendMessage(msgPrefix + "§7Du wurdest von §6" + leader.getDisplayName() + " §7eingeladen");
+		sendMessage("§a" + player.getDisplayName() + " §7 wurde eingeladen");
+		player.sendMessage(msgPrefix + "§7Du wurdest von §a" + leader.getDisplayName() + " §7eingeladen");
 	}
 	
 	/**
@@ -59,18 +59,19 @@ public class Group {
 		this.members.add(player);
 		// MESSAGE
 		if(invitation) {
-			sendMessage("§6" + player.getDisplayName() + " §7hat die Einladung angenommen eingeladen");
+			sendMessage("§a" + player.getDisplayName() + " §7hat die Einladung angenommen eingeladen");
 		} else {
-			sendMessage("§6" + player.getDisplayName() + " §7ist der Gruppe beigetreten");
+			sendMessage("§a" + player.getDisplayName() + " §7ist der Gruppe beigetreten");
 		}
 	}
 	
 	public void leave(Player player) {
 		boolean isLeader = GroupManager.isGroupLeader(player);
-		this.members.remove(player);
-	
+		
 		// MESSAGE
-		sendMessage("§6" + player.getDisplayName() + " §7hat die Gruppe verlassen");
+		sendMessage("§a" + player.getDisplayName() + " §7hat die Gruppe verlassen");
+
+		this.members.remove(player);
 		
 		if(isLeader)
 			if(this.members.size() != 0)
@@ -106,7 +107,7 @@ public class Group {
 	 */
 	public void sendMessage(Player from, String msg) {
 		for(Player p : members) {
-			p.sendMessage(msgPrefix + "§6" + from.getDisplayName() + " >> §7" + msg);
+			p.sendMessage(msgPrefix + "§a" + from.getDisplayName() + " >> §7" + msg);
 		}
 	}
 	

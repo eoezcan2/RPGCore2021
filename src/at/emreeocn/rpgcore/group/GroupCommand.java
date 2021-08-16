@@ -65,10 +65,22 @@ public class GroupCommand implements CommandExecutor {
 					return true;
 				}
 				
+				// ADMINLIST
+				if(args[0].equalsIgnoreCase("adminlist")) {
+					if(player.hasPermission("mephistogames.group.adminlist")) {
+						player.sendMessage(GroupManager.getAdminList());
+					} else {
+						player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu hast keine Rechte dazu");
+					}
+					return true;
+				}
+				
 				// LIST
 				if(args[0].equalsIgnoreCase("list")) {
-					if(player.hasPermission("mephistogames.group.list")) {
-						player.sendMessage(GroupManager.getList());
+					if(GroupManager.isInGroup(player)) {
+						player.sendMessage(GroupManager.getList(GroupManager.getGroup(player)));
+					} else {
+						player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist in keiner Gruppe");
 					}
 					return true;
 				}
@@ -103,10 +115,11 @@ public class GroupCommand implements CommandExecutor {
 				// MESSAGE
 				if(args[0].equalsIgnoreCase("msg")) {
 					if(GroupManager.isInGroup(player)) {
-						GroupManager.getGroup(player).sendMessage(buildString(args));
+						GroupManager.getGroup(player).sendMessage(player, buildString(args));
 					} else {
 						player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist in keiner Gruppe");
 					}
+					return true;
 				}
 			}
 			
@@ -122,7 +135,7 @@ public class GroupCommand implements CommandExecutor {
 		String s = "";
 		for(int i = 1; i < args.length; i++) {
 			s += args[i];
-			if(i == (args.length - 1))
+			if(i != (args.length - 1))
 				s += " ";
 		}
 		return s;

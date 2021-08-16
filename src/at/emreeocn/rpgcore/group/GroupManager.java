@@ -29,12 +29,16 @@ public class GroupManager {
 		return false;
 	}
 	
-	public static String getList() {
+	public static String getAdminList() {
 		String s = "";
 		for(Group g : groups) {
-			s += "§2" + g.getLeader().getDisplayName() + "\n§7- §a" + g.getMembers().toString() + "\n";
+			s += "§2" + g.getLeader().getDisplayName() + "\n§7- Mitglieder: §a" + getPlayerDisplayNameList(g.getMembers()) + "\n";
 		}
 		return s;
+	}
+	
+	public static String getList(Group g) {
+		return "§7Gruppenleiter: §2" + g.getLeader().getDisplayName() + "\n§7Mitglieder: §a" + getPlayerDisplayNameList(g.getMembers());
 	}
 	
 	public static Group getGroup(Player player) {
@@ -50,6 +54,14 @@ public class GroupManager {
 	
 	public static void removeGroup(Group group) {
 		groups.remove(group);
+	}
+	
+	private static ArrayList<String> getPlayerDisplayNameList(ArrayList<Player> players) {
+		ArrayList<String> res = new ArrayList<String>();
+		for(Player p : players) {
+			res.add(p.getDisplayName());
+		}
+		return res;
 	}
 	
 }
