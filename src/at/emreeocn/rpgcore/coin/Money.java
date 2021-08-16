@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import at.emreeocn.rpgcore.main.Main;
 import at.emreeocn.rpgcore.util.Config;
 import at.emreeocn.rpgcore.util.PacketMethods;
-import at.emreeocn.rpgcore.scoreboard.RPGScoreboard;
+import at.emreeocn.rpgcore.scoreboard.ServerScoreboard;
 
 public class Money {
 	
@@ -87,7 +87,7 @@ public class Money {
 		}
 		
 		if(Bukkit.getPlayer(uuid) != null) {
-			RPGScoreboard sb = new RPGScoreboard(Bukkit.getPlayer(uuid));
+			ServerScoreboard sb = new ServerScoreboard(Bukkit.getPlayer(uuid));
 			sb.display();
 		}
 	}
@@ -103,7 +103,7 @@ public class Money {
 		}
 		
 		if(Bukkit.getPlayer(uuid) != null) {
-			RPGScoreboard sb = new RPGScoreboard(Bukkit.getPlayer(uuid));
+			ServerScoreboard sb = new ServerScoreboard(Bukkit.getPlayer(uuid));
 			sb.display();
 			PacketMethods.sendActionBar(Bukkit.getPlayer(uuid), "§6+ " + amount + " Coins");
 		}
@@ -120,7 +120,7 @@ public class Money {
 		}
 		
 		if(Bukkit.getPlayer(uuid) != null) {
-			RPGScoreboard sb = new RPGScoreboard(Bukkit.getPlayer(uuid));
+			ServerScoreboard sb = new ServerScoreboard(Bukkit.getPlayer(uuid));
 			sb.display();
 		}
 	}

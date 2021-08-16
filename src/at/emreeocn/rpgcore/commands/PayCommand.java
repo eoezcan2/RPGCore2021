@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 import at.emreeocn.rpgcore.util.Config;
 import at.emreeocn.rpgcore.coin.Money;
-import at.emreeocn.rpgcore.scoreboard.RPGScoreboard;
+import at.emreeocn.rpgcore.scoreboard.ServerScoreboard;
 
 public class PayCommand implements CommandExecutor {
 
@@ -41,8 +41,8 @@ public class PayCommand implements CommandExecutor {
 						player.sendMessage(Config.getPrefix() + "§aTransaktion wurde erfolgreich ausgeführt");
 						target.sendMessage(Config.getPrefix() +  "§6" + player.getDisplayName() + " §ahat dir §6" + amount + " §agezahlt");
 						
-						RPGScoreboard sb1 = new RPGScoreboard(player);
-						RPGScoreboard sb2 = new RPGScoreboard(target);
+						ServerScoreboard sb1 = new ServerScoreboard(player);
+						ServerScoreboard sb2 = new ServerScoreboard(target);
 						sb1.display();
 						sb2.display();
 					}

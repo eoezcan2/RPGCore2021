@@ -24,7 +24,7 @@ import at.emreeocn.rpgcore.enderchest.Enderchest;
 import at.emreeocn.rpgcore.plotsurvive.PlotSurviveManager;
 import at.emreeocn.rpgcore.reward.RewardManager;
 import at.emreeocn.rpgcore.rpg.RPG;
-import at.emreeocn.rpgcore.scoreboard.RPGScoreboard;
+import at.emreeocn.rpgcore.scoreboard.ServerScoreboard;
 import at.emreeocn.rpgcore.skill.Skill;
 
 public class MainListener implements Listener {
@@ -76,7 +76,7 @@ public class MainListener implements Listener {
 			player.sendMessage(Config.getPrefix() + "§cBitte betrete den Server neu!");
 		}
 		
-		RPGScoreboard sb = new RPGScoreboard(player);
+		ServerScoreboard sb = new ServerScoreboard(player);
 		sb.display();
 	}
 	

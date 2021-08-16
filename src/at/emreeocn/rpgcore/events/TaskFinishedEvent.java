@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import at.emreeocn.rpgcore.scoreboard.RPGScoreboard;
+import at.emreeocn.rpgcore.scoreboard.ServerScoreboard;
 import at.emreeocn.rpgcore.task.Task;
 
 public class TaskFinishedEvent extends Event {
@@ -30,7 +30,7 @@ public class TaskFinishedEvent extends Event {
 				player.sendMessage(s);
 			}
 			player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 4);
-			RPGScoreboard sb = new RPGScoreboard(player);
+			ServerScoreboard sb = new ServerScoreboard(player);
 			sb.display();
 		}
 	}
