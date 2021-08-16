@@ -64,7 +64,7 @@ public class GroupManager {
 		return false;
 	}
 	
-	private static ArrayList<String> getPlayerDisplayNameList(ArrayList<Player> players) {
+	public static ArrayList<String> getPlayerDisplayNameList(ArrayList<Player> players) {
 		ArrayList<String> res = new ArrayList<String>();
 		for(Player p : players) {
 			res.add(p.getDisplayName());

@@ -12,12 +12,13 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import at.emreeocn.rpgcore.events.TaskFinishedEvent;
-import at.emreeocn.rpgcore.util.Config;
 import at.emreeocn.rpgcore.coin.Money;
 import at.emreeocn.rpgcore.collection.CollectionMenu;
 import at.emreeocn.rpgcore.enderchest.Enderchest;
 import at.emreeocn.rpgcore.enderchest.EnderchestMenu;
+import at.emreeocn.rpgcore.events.TaskFinishedEvent;
+import at.emreeocn.rpgcore.group.GroupManager;
+import at.emreeocn.rpgcore.group.GroupMenu;
 import at.emreeocn.rpgcore.home.HomeManager;
 import at.emreeocn.rpgcore.home.HomeMenu;
 import at.emreeocn.rpgcore.playerinfo.PlayerInfoMenu;
@@ -31,6 +32,7 @@ import at.emreeocn.rpgcore.skill.Skill;
 import at.emreeocn.rpgcore.skill.SkillsMenu;
 import at.emreeocn.rpgcore.task.Task;
 import at.emreeocn.rpgcore.task.TaskMenu;
+import at.emreeocn.rpgcore.util.Config;
 
 public class MenuListener implements Listener {
 
@@ -94,6 +96,10 @@ public class MenuListener implements Listener {
 						break;
 					case HOPPER:
 						player.openInventory(Bukkit.createInventory(null, 9 * 6, "§9Trash"));
+						break;
+					case PLAYER_HEAD:
+						if(GroupManager.isInGroup(player))
+							new GroupMenu(player).display(player);
 						break;
 					}
 				}

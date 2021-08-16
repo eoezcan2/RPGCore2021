@@ -13,14 +13,14 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import com.github.intellectualsites.plotsquared.plot.object.PlotPlayer;
 
-import at.emreeocn.rpgcore.util.Config;
-import at.emreeocn.rpgcore.util.ItemCreator;
-import at.emreeocn.rpgcore.util.RPGMethods;
-import at.emreeocn.rpgcore.coin.Money;
+import at.emreeocn.rpgcore.group.GroupManager;
 import at.emreeocn.rpgcore.home.HomeManager;
 import at.emreeocn.rpgcore.plotsurvive.PlotSurviveManager;
 import at.emreeocn.rpgcore.reward.RewardManager;
 import at.emreeocn.rpgcore.task.Task;
+import at.emreeocn.rpgcore.util.Config;
+import at.emreeocn.rpgcore.util.ItemCreator;
+import at.emreeocn.rpgcore.util.RPGMethods;
 
 public class RPGMenu {
 
@@ -30,7 +30,7 @@ public class RPGMenu {
 
     private ItemStack skillItem;
     private ItemStack closeItem;
-    private ItemStack playerItem;
+    private ItemStack groupItem;
     private ItemStack spawnItem;
     private ItemStack collectionItem;
     private ItemStack rewardItem;
@@ -54,7 +54,7 @@ public class RPGMenu {
 
         createCloseItem();
         createSkillItem();
-        createPlayerItem();
+        createGroupItem();
         createSpawnItem();
 //		createCollectionItem();
         createRewardItem();
@@ -73,7 +73,7 @@ public class RPGMenu {
     public Inventory getGui() {
         Inventory inv = Bukkit.createInventory(null, invSize, "§8RPG-Menü");
 
-        inv.setItem(3 - 1, playerItem);
+        inv.setItem(3 - 1, groupItem);
         inv.setItem(12 - 1, skillItem);
 //		inv.setItem(5 - 1, collectionItem);
         inv.setItem(5 - 1, taskItem);
@@ -317,18 +317,18 @@ public class RPGMenu {
     }
 
     // @SuppressWarnings("deprecation")
-    private void createPlayerItem() {
+    private void createGroupItem() {
         ItemStack item = getHead(player);
 
         ArrayList<String> lore = new ArrayList<>();
         lore.add("");
         // lore.add("§2Spielzeit: §6" + millisToTime(PlayTime.getTotal(player)));
         // lore.add("§7Rang: " + PermissionsEx.getUser(player).getGroups()[0].getPrefix());
-        lore.add("§7Coins: §6" + Money.getMoney(player.getUniqueId()));
-		/*if(Task.didTask(player, Task.WITHER_SKELETON_HEAD)) {
-			lore.add("");
-			lore.add("§2Du befindest dich im §5Endgame");
-		}*/
+        if(GroupManager.isInGroup(player)) {
+        	lore.add("§2Gruppe: Ja");
+        } else {
+        	lore.add("§2Gruppe: Nein");
+        }
 
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName("§f" + player.getDisplayName());
@@ -337,7 +337,7 @@ public class RPGMenu {
 
         item.setItemMeta(meta);
 
-        playerItem = item;
+        groupItem = item;
     }
 
     private void createSpawnItem() {
@@ -441,7 +441,7 @@ public class RPGMenu {
     }
 
     public ItemStack getPlayerItem() {
-        return playerItem;
+        return groupItem;
     }
 
     public ItemStack getSpawnItem() {

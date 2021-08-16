@@ -132,6 +132,10 @@ public class Group {
 	public ArrayList<Player> getMembers() {
 		return members;
 	}
+	
+	public ArrayList<String> getMembersWithNames() {
+		return GroupManager.getPlayerDisplayNameList(members);
+	}
 
 	public void setMembers(ArrayList<Player> members) {
 		this.members = members;
