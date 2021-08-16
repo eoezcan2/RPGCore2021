@@ -31,8 +31,6 @@ public class RPGScoreboard {
 		
 		obj.getScore(" ").setScore(12);
 		
-		obj.getScore("§fCoins:§r §6§l" + Money.getMoney(player.getUniqueId())).setScore(9);
-		
 		String s1 = "";
 		
 		if(Farmworld.getType(player.getLocation()) != null) {
@@ -47,6 +45,10 @@ public class RPGScoreboard {
 		}
 		
 		obj.getScore("§f=> §6§l" + s1).setScore(11);
+		
+		obj.getScore("  ").setScore(10);
+		
+		obj.getScore("§fCoins:§r §6§l" + Money.getMoney(player.getUniqueId())).setScore(9);
 	}
 	
 	public Scoreboard getScoreboard() {

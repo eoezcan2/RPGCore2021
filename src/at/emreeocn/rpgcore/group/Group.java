@@ -2,6 +2,7 @@ package at.emreeocn.rpgcore.group;
 
 import java.util.ArrayList;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 public class Group {
@@ -11,6 +12,10 @@ public class Group {
 	private Player leader;
 	private ArrayList<Player> members;
 	
+	/**
+	 * Constructor with leader player as parameter
+	 * @param leader player that leads the group
+	 */
 	public Group(Player leader) {
 		this.setLeader(leader);
 		this.members = new ArrayList<Player>();
@@ -20,6 +25,10 @@ public class Group {
 		sendMessage("§7Gruppe wurde erstellt");
 	}
 	
+	/**
+	 * Sets the leader of the group
+	 * @param player
+	 */
 	public void setGroupLeader(Player player) {
 		setLeader(player);
 		
@@ -27,6 +36,10 @@ public class Group {
 		sendMessage("§6" + player.getDisplayName() + " §7ist jetzt Gruppenleiter");
 	}
 	
+	/**
+	 * Invites a player to the group
+	 * @param player player to invite
+	 */
 	public void invite(Player player) {
 		// ADD TO HASHMAP
 		GroupManager.getInvites().put(player, this);
@@ -36,6 +49,11 @@ public class Group {
 		player.sendMessage(msgPrefix + "§7Du wurdest von §6" + leader.getDisplayName() + " §7eingeladen");
 	}
 	
+	/**
+	 * Adds a player to the group
+	 * @param player player to add
+	 * @param invitation
+	 */
 	public void join(Player player, boolean invitation) {
 		this.members.add(player);
 		// MESSAGE
@@ -60,6 +78,19 @@ public class Group {
 				dissolve();
 	}
 	
+	/**
+	 * Teleports the group to a location
+	 * @param location location to teleport to
+	 */
+	public void teleport(Location location) {
+		for(Player p : members) {
+			p.teleport(location);
+		}
+	}
+	
+	/**
+	 * Delete this group
+	 */
 	public void dissolve() {
 		// MESSAGE
 		sendMessage("Die Gruppe wurde aufgelöst");
@@ -67,12 +98,21 @@ public class Group {
 		GroupManager.removeGroup(this);
 	}
 	
+	/**
+	 * Sends a message to the group that comes from a player
+	 * @param from player the message comes from
+	 * @param msg message to send
+	 */
 	public void sendMessage(Player from, String msg) {
 		for(Player p : members) {
 			p.sendMessage(msgPrefix + "§6" + from.getDisplayName() + " >> §7" + msg);
 		}
 	}
 	
+	/**
+	 * Sends a message to the group
+	 * @param msg
+	 */
 	public void sendMessage(String msg) {
 		for(Player p : members) {
 			p.sendMessage(msgPrefix + "§7" + msg);

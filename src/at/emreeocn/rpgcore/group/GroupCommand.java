@@ -99,12 +99,33 @@ public class GroupCommand implements CommandExecutor {
 				}
 			}
 			
+			if(args.length >= 2) {
+				// MESSAGE
+				if(args[0].equalsIgnoreCase("msg")) {
+					if(GroupManager.isInGroup(player)) {
+						GroupManager.getGroup(player).sendMessage(buildString(args));
+					} else {
+						player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist in keiner Gruppe");
+					}
+				}
+			}
+			
 			else {
 				return false;
 			}
 		}
 		
 		return false;
+	}
+	
+	private static String buildString(String[] args) {
+		String s = "";
+		for(int i = 1; i < args.length; i++) {
+			s += args[i];
+			if(i == (args.length - 1))
+				s += " ";
+		}
+		return s;
 	}
 
 }
