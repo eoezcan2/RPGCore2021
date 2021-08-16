@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 import at.emreeocn.rpgcore.util.Config;
 import at.emreeocn.rpgcore.coin.Money;
-import at.emreeocn.rpgcore.scoreboard.RPGScoreboard;
+import at.emreeocn.rpgcore.scoreboard.ServerScoreboard;
 
 public class MoneyCommand implements CommandExecutor {
 
@@ -94,7 +94,7 @@ public class MoneyCommand implements CommandExecutor {
 						target.sendMessage(Config.getPrefix() + "§aDein Geld wurde aktualisiert");
 						
 						if(sender instanceof Player) {
-							RPGScoreboard sb = new RPGScoreboard((Player) sender);
+							ServerScoreboard sb = new ServerScoreboard((Player) sender);
 							sb.display();
 						}
 						
@@ -125,7 +125,7 @@ public class MoneyCommand implements CommandExecutor {
 						target.sendMessage(Config.getPrefix() + "§aDein Geld wurde aktualisiert");
 						
 						if(sender instanceof Player) {
-							RPGScoreboard sb = new RPGScoreboard((Player) sender);
+							ServerScoreboard sb = new ServerScoreboard((Player) sender);
 							sb.display();
 						}
 						

@@ -22,7 +22,7 @@ import at.emreeocn.rpgcore.farmworld.Farmworld;
 import at.emreeocn.rpgcore.playerinfo.PlayerInfoMenu;
 import at.emreeocn.rpgcore.rpg.RPG;
 import at.emreeocn.rpgcore.rpg.RPGMenu;
-import at.emreeocn.rpgcore.scoreboard.RPGScoreboard;
+import at.emreeocn.rpgcore.scoreboard.ServerScoreboard;
 
 public class RPGListener implements Listener {
 	
@@ -84,7 +84,7 @@ public class RPGListener implements Listener {
 	
 	@EventHandler
 	public void onPlayerWorldChange(PlayerChangedWorldEvent e) {
-		RPGScoreboard sb = new RPGScoreboard(e.getPlayer());
+		ServerScoreboard sb = new ServerScoreboard(e.getPlayer());
 		sb.display();
 	}
 	

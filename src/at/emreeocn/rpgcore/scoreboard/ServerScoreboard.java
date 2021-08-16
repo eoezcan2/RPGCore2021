@@ -3,22 +3,23 @@ package at.emreeocn.rpgcore.scoreboard;
 import java.time.LocalDate;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 
-import at.emreeocn.rpgcore.util.Config;
 import at.emreeocn.rpgcore.coin.Money;
 import at.emreeocn.rpgcore.farmworld.Farmworld;
+import at.emreeocn.rpgcore.util.Config;
 
-public class RPGScoreboard {
+public class ServerScoreboard {
 	
 	private Scoreboard scoreboard;
 	private Player player;
 	
 	@SuppressWarnings("deprecation")
-	public RPGScoreboard(Player player) {
+	public ServerScoreboard(Player player) {
 		this.player = player;
 		
 		scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
@@ -31,22 +32,11 @@ public class RPGScoreboard {
 		
 		obj.getScore(" ").setScore(12);
 		
+		obj.getScore("§fOrt: §6§l" + formatLocation(player.getLocation())).setScore(11);
+		
+		obj.getScore("  ").setScore(10);
+		
 		obj.getScore("§fCoins:§r §6§l" + Money.getMoney(player.getUniqueId())).setScore(9);
-		
-		String s1 = "";
-		
-		if(Farmworld.getType(player.getLocation()) != null) {
-			s1 = Farmworld.getType(player.getLocation()).getDisplayName();
-			
-		} else {
-			if(player.getLocation().getWorld() == Config.getSpawn().getWorld()) s1 = "Stadt";
-			else if(player.getLocation().getWorld() == Config.getCitybuild().getWorld()) s1 = "Citybuild";
-			else {
-				s1 = player.getWorld().getName();
-			}
-		}
-		
-		obj.getScore("§f=> §6§l" + s1).setScore(11);
 	}
 	
 	public Scoreboard getScoreboard() {
@@ -59,6 +49,21 @@ public class RPGScoreboard {
 	
 	public void display() {
 		player.setScoreboard(scoreboard);
+	}
+	
+	public static String formatLocation(Location location) {
+		String s = "";
+		if(Farmworld.getType(location) != null) {
+			s = Farmworld.getType(location).getDisplayName();
+			
+		} else {
+			if(location.getWorld() == Config.getSpawn().getWorld()) s = "Stadt";
+			else if(location.getWorld() == Config.getCitybuild().getWorld()) s = "Citybuild";
+			else {
+				s = location.getWorld().getName();
+			}
+		}
+		return s;
 	}
 	
 }

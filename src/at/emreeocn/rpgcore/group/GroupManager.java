@@ -32,7 +32,7 @@ public class GroupManager {
 	public static String getList() {
 		String s = "";
 		for(Group g : groups) {
-			s += "§7- §2" + g.getLeader().getDisplayName() + "\n §7Mitglieder: §a" + g.getMembers().toString() + "\n";
+			s += "§2" + g.getLeader().getDisplayName() + "\n§7- §a" + g.getMembers().toString() + "\n";
 		}
 		return s;
 	}
