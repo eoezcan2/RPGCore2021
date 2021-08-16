@@ -14,6 +14,7 @@ public class Group {
 	public Group(Player leader) {
 		this.setLeader(leader);
 		this.members = new ArrayList<Player>();
+		this.members.add(leader);
 		GroupManager.addGroup(this);
 		
 		// MESSAGE
