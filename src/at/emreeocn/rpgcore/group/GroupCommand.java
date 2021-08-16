@@ -103,6 +103,34 @@ public class GroupCommand implements CommandExecutor {
 							} else {
 								player.sendMessage(Config.getPrefix() + "§4Fehler: §cDieser Spieler ist nicht online");
 							}
+						} else {
+							player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist nicht der Gruppenleiter");
+						}
+					} else {
+						player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist in keiner Gruppe");
+					}
+					return true;
+				}
+				
+				// LEADER
+				if(args[0].equalsIgnoreCase("promote") || args[0].equalsIgnoreCase("leader")) {
+					if(GroupManager.isInGroup(player)) {
+						if(GroupManager.isGroupLeader(player)) {
+							if(Bukkit.getPlayer(args[1]) != null) {
+								Player target = Bukkit.getPlayer(args[1]);
+								if(target != player) {
+									GroupManager.getGroup(player).setGroupLeader(target);
+									
+								} else {
+									player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist schon Gruppenleiter");
+								}
+								
+							} else {
+								player.sendMessage(Config.getPrefix() + "§4Fehler: §cDieser Spieler ist nicht online");
+							}
+							
+						} else {
+							player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist nicht der Gruppenleiter");
 						}
 					} else {
 						player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist in keiner Gruppe");

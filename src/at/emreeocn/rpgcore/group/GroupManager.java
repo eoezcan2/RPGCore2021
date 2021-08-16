@@ -56,6 +56,14 @@ public class GroupManager {
 		groups.remove(group);
 	}
 	
+	public static boolean sameGroup(Player player1, Player player2) {
+		for(Group g : groups) {
+			if(g.getMembers().contains(player1) && g.getMembers().contains(player2))
+				return true;
+		}
+		return false;
+	}
+	
 	private static ArrayList<String> getPlayerDisplayNameList(ArrayList<Player> players) {
 		ArrayList<String> res = new ArrayList<String>();
 		for(Player p : players) {
