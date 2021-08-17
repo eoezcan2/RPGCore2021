@@ -325,13 +325,14 @@ public class RPGMenu {
         // lore.add("§2Spielzeit: §6" + millisToTime(PlayTime.getTotal(player)));
         // lore.add("§7Rang: " + PermissionsEx.getUser(player).getGroups()[0].getPrefix());
         if(GroupManager.isInGroup(player)) {
-        	lore.add("§2Gruppe: Ja");
+        	lore.add("§7In einer Gruppe: §aJa");
         } else {
-        	lore.add("§2Gruppe: Nein");
+        	lore.add("§7In einer Gruppe: §cNein");
+        	lore.add("§7(Klicken zum Erstellen)");
         }
 
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName("§f" + player.getDisplayName());
+        meta.setDisplayName("§fGruppe");
         meta.setLore(lore);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 

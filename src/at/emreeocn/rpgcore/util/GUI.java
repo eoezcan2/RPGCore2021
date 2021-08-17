@@ -5,6 +5,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import at.emreeocn.rpgcore.rpg.RPGMenu;
+
 public class GUI {
 
 	private Inventory inventory;
@@ -19,6 +21,13 @@ public class GUI {
 		player.openInventory(inventory);
 	}
 	
+	public void fillBackground() {
+		ItemStack item = RPGMenu.getNull();
+		for(int i = 0; i < getInventory().getSize(); i++) {
+			if(getInventory().getItem(i) == null) setItem(i, item);
+		}
+	}
+	
 	public void setItem(int slot, ItemStack item) {
 		inventory.setItem(slot, item);
 	}
@@ -26,7 +35,9 @@ public class GUI {
 	public Inventory getInventory() {
 		return inventory;
 	}
-	
-	public String getInventoryTitle() { return title; }
+
+	public String getTitle() {
+		return title;
+	}
 	
 }

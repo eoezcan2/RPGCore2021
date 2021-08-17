@@ -20,7 +20,6 @@ public class SkillsMenu {
 	
 	private int invSize;
 	
-	private static ItemStack backItem;
 	private ItemStack healthItem;
 	private ItemStack speedItem;
 	private ItemStack pointsItem;
@@ -30,7 +29,6 @@ public class SkillsMenu {
 		this.player = player;
 		this.invSize = 9 * 3;
 		
-		createBackItem();
 		createHealthItem();
 		createSpeedItem();
 		createPointsItem();
@@ -51,27 +49,12 @@ public class SkillsMenu {
 		inv.setItem(14 - 1, speedItem);
 		inv.setItem(5 - 1, pointsItem);
 		inv.setItem(23 - 1, getStatusItem(Skill.getStatus().get(player)));
-		inv.setItem(invSize - 1, backItem);
+		inv.setItem(invSize - 1, getBackItem());
 		
 		
 		return inv;
 	}
-	
-	private void createBackItem() {
-		ItemStack item = new ItemStack(Material.ARROW);
-		
-		ArrayList<String> lore = new ArrayList<>();
-		
-		ItemMeta meta = item.getItemMeta();
-		meta.setDisplayName("§cZurück");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		
-		item.setItemMeta(meta);
-		
-		backItem = item;
-	}
-	
+
 	private void createResetItem() {
 		resetItem = ItemCreator.createGuiItem(Material.PAPER, "§bReset", new ArrayList<String>());
 	}
@@ -165,7 +148,18 @@ public class SkillsMenu {
 	}
 
 	public static ItemStack getBackItem() {
-		return backItem;
+		ItemStack item = new ItemStack(Material.ARROW);
+		
+		ArrayList<String> lore = new ArrayList<>();
+		
+		ItemMeta meta = item.getItemMeta();
+		meta.setDisplayName("§cZurück");
+		meta.setLore(lore);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		
+		item.setItemMeta(meta);
+		
+		return item;
 	}
 
 	public ItemStack getPointsItem() {

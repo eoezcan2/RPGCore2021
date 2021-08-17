@@ -2,7 +2,9 @@ package at.emreeocn.rpgcore.group;
 
 import java.util.ArrayList;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -10,11 +12,13 @@ import at.emreeocn.rpgcore.rpg.RPGMenu;
 import at.emreeocn.rpgcore.util.GUI;
 
 public class GroupMenu extends GUI {
+	private static String inventoryTitle = "§8Gruppe-Menü";
+	
 	private Player player;
 	private Group group;
 	
 	public GroupMenu(Player player) {
-		super("§8Gruppe-Menü", 9 * 6);
+		super(getInventoryTitle(), 9 * 6);
 		this.player = player;
 		this.group = GroupManager.getGroup(player);
 		
@@ -23,6 +27,10 @@ public class GroupMenu extends GUI {
 	
 	public void setItems() {
 		addMemberItems();
+		setItem(45, getLeaveItem());
+		setItem(getInventory().getSize() - 1, getReturnItem());
+		
+		fillBackground();
 	}
 	
 	private void addMemberItems() {
@@ -37,9 +45,36 @@ public class GroupMenu extends GUI {
 		
 		ArrayList<String> lore = new ArrayList<String>();
 		lore.add(" ");
-		lore.add((leader ? "§2Leiter" : "§aMitglied"));
+		lore.add("§7Rolle: " + (leader ? "§2Gruppenleiter" : "§aMitglied"));
 		
 		meta.setDisplayName("§f" + player.getDisplayName());
+		meta.setLore(lore);
+		
+		item.setItemMeta(meta);
+		
+		return item;
+	}
+	
+	public static ItemStack getLeaveItem() {
+		ItemStack item = new ItemStack(Material.BARRIER);
+		
+		ItemMeta meta = item.getItemMeta();
+		meta.setDisplayName("§cGruppe verlassen");
+		
+		item.setItemMeta(meta);
+		
+		return item;
+	}
+	
+	public static ItemStack getReturnItem() {
+		ItemStack item = new ItemStack(Material.ARROW);
+		
+		ArrayList<String> lore = new ArrayList<>();
+		
+		ItemMeta meta = item.getItemMeta();
+		meta.setDisplayName("§cZurück");
+		meta.setLore(lore);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		
 		item.setItemMeta(meta);
 		
@@ -49,5 +84,7 @@ public class GroupMenu extends GUI {
 	public Player getPlayer() {
 		return player;
 	}
+	
+	public static String getInventoryTitle() { return inventoryTitle; }
 	
 }

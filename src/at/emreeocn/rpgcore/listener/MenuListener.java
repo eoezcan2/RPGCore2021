@@ -17,6 +17,7 @@ import at.emreeocn.rpgcore.collection.CollectionMenu;
 import at.emreeocn.rpgcore.enderchest.Enderchest;
 import at.emreeocn.rpgcore.enderchest.EnderchestMenu;
 import at.emreeocn.rpgcore.events.TaskFinishedEvent;
+import at.emreeocn.rpgcore.group.Group;
 import at.emreeocn.rpgcore.group.GroupManager;
 import at.emreeocn.rpgcore.group.GroupMenu;
 import at.emreeocn.rpgcore.home.HomeManager;
@@ -98,8 +99,8 @@ public class MenuListener implements Listener {
 						player.openInventory(Bukkit.createInventory(null, 9 * 6, "§9Trash"));
 						break;
 					case PLAYER_HEAD:
-						if(GroupManager.isInGroup(player))
-							new GroupMenu(player).display(player);
+						if(!GroupManager.isInGroup(player)) new Group(player);
+						new GroupMenu(player).display(player);
 						break;
 					}
 				}
@@ -240,6 +241,24 @@ public class MenuListener implements Listener {
 							String home = clicked.getItemMeta().getDisplayName().substring(2);
 							player.teleport(HomeManager.get(player, home));
 						}
+					}
+				}
+				
+				// GROUP
+				if(title.equalsIgnoreCase(GroupMenu.getInventoryTitle())) {
+					e.setCancelled(true);
+					
+					if(e.getCurrentItem().isSimilar(GroupMenu.getLeaveItem())) {
+						if(GroupManager.isInGroup(player)) {
+							GroupManager.getGroup(player).leave(player);
+						} else {
+							player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist in keiner Gruppe");
+						}
+						player.closeInventory();
+					}
+					
+					if(e.getCurrentItem().isSimilar(GroupMenu.getReturnItem())) {
+						player.openInventory(new RPGMenu(player).getGui());
 					}
 				}
 			}
