@@ -80,6 +80,13 @@ public class Group {
 				dissolve();
 	}
 	
+	public void kick(Player player) {
+		// MESSAGE
+		sendMessage("§a" + player.getDisplayName() + " §7wurde aus der Gruppe gekickt");
+
+		this.members.remove(player);
+	}
+	
 	/**
 	 * Teleports the group to a location
 	 * @param location location to teleport to

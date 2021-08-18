@@ -260,6 +260,30 @@ public class MenuListener implements Listener {
 					if(e.getCurrentItem().isSimilar(GroupMenu.getReturnItem())) {
 						player.openInventory(new RPGMenu(player).getGui());
 					}
+					
+					if(e.getCurrentItem().getType() == Material.PLAYER_HEAD) {
+						if(e.isRightClick()) {
+							Player target = GroupManager.getPlayerByMemberItem(e.getCurrentItem());
+							if(target != player) {
+								if(GroupManager.isInGroup(player)) {
+									if(GroupManager.isGroupLeader(player)) {
+										GroupManager.getGroup(player).kick(player);
+										
+									} else {
+										player.sendMessage("§4Fehler: §cDu bist nicht der Gruppenleiter");
+									}
+									
+								} else {
+									player.sendMessage("§4Fehler: §cDu bist in keiner Gruppe");
+								}
+								
+							} else {
+								player.sendMessage("§4Fehler: §cDu kannst dich nicht selbst kicken");
+							}
+							
+							player.closeInventory();
+						}
+					}
 				}
 			}
 		}

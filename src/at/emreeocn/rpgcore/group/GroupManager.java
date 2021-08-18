@@ -3,7 +3,10 @@ package at.emreeocn.rpgcore.group;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 public class GroupManager {
 
@@ -62,6 +65,16 @@ public class GroupManager {
 				return true;
 		}
 		return false;
+	}
+	
+	public static Player getPlayerByMemberItem(ItemStack item) {
+		if(item.getType() == Material.PLAYER_HEAD) {
+			String name = item.getItemMeta().getDisplayName().substring(1, item.getItemMeta().getDisplayName().length() - 1);
+			System.out.println(name);
+			return Bukkit.getPlayer(name);
+		}
+		
+		return null;
 	}
 	
 	public static ArrayList<String> getPlayerDisplayNameList(ArrayList<Player> players) {
