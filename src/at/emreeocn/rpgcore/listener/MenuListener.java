@@ -268,6 +268,7 @@ public class MenuListener implements Listener {
 								if(GroupManager.isInGroup(player)) {
 									if(GroupManager.isGroupLeader(player)) {
 										GroupManager.getGroup(player).kick(player);
+										new GroupMenu(player).display(player);
 										
 									} else {
 										player.sendMessage("§4Fehler: §cDu bist nicht der Gruppenleiter");
