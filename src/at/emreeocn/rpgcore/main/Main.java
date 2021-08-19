@@ -37,6 +37,7 @@ import at.emreeocn.rpgcore.listener.MainListener;
 import at.emreeocn.rpgcore.listener.MenuListener;
 import at.emreeocn.rpgcore.listener.RPGListener;
 import at.emreeocn.rpgcore.plotsurvive.PlotSurvivalListener;
+import at.emreeocn.rpgcore.role.RoleManager;
 import at.emreeocn.rpgcore.util.Config;
 import at.emreeocn.rpgcore.util.PlayTime;
 import at.emreeocn.rpgcore.util.SQL;
@@ -208,6 +209,13 @@ public class Main extends JavaPlugin {
 					+ "	NAME VARCHAR(25) NOT NULL,"
 					+ "	UUID VARCHAR(36) NOT NULL,"
 					+ "	LEVEL INT(5) NOT NULL DEFAULT '1',"
+					+ " PRIMARY KEY (UUID)"
+					+ ") ENGINE=InnoDB;").executeUpdate();
+			
+			prepareStatement("CREATE TABLE IF NOT EXISTS " + RoleManager.getTable() + "("
+					+ "	NAME VARCHAR(25) NOT NULL,"
+					+ "	UUID VARCHAR(36) NOT NULL,"
+					+ "	ROLE TEXT NOT NULL,"
 					+ " PRIMARY KEY (UUID)"
 					+ ") ENGINE=InnoDB;").executeUpdate();
 			
