@@ -24,7 +24,7 @@ public enum Task {
 	TOUCH_ADMIN(6, "Goldener Finger", "Interagiere (Rechtsklick) einmal mit einem Admin", new Reward(goldIngot(9), 500, 6, null)),
 	PLOT_CLAIM(7, "Ein Stückchen Heimat", "Ergattere dir ein Grundstück (Command: /p auto oder /p claim)", new Reward(null, 50, 1, null)),
 	WITHER_SKELETON_HEAD(8, "Schwarze Knochen", "Töte ein Wither-Skelett und erhalte seinen Kopf", new Reward(null, 500, 6, endText())),
-	MAKE_GROUP(9, "Gemeinsam sind wir stärker", "Mache eine Gruppe mit jemandem", new Reward(null, 50, 1, null)),
+	MAKE_GROUP(9, "Gemeinsam sind wir stärker", "Lasse jemanden deiner Gruppe beitreten (/group invite <Spieler>)", new Reward(null, 50, 1, null)),
 	DIAMOND_CHESTPLATE(10, "Drip", "Crafte dir eine Diamant Brustplatte", new Reward(null, 100, 3, null)),
 	TELEPORT_NETHER(11, "Furchtlos durch die Hölle", "Betrete den Nether", new Reward(null, 50, 1, null)),
 	TELEPORT_CAVE(12, "Ressourcen ohne Ende!", "Betrete The Cave", new Reward(null, 50, 1, null)),

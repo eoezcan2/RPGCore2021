@@ -29,6 +29,7 @@ public class GroupMenu extends GUI {
 		addMemberItems();
 		setItem(45, getLeaveItem());
 		setItem(getInventory().getSize() - 1, getReturnItem());
+		setItem(getInventory().getSize() - 5, getHelpItem());
 		
 		fillBackground();
 	}
@@ -48,6 +49,29 @@ public class GroupMenu extends GUI {
 		lore.add("§7Rolle: " + (leader ? "§2Gruppenleiter" : "§aMitglied"));
 		
 		meta.setDisplayName("§f" + player.getDisplayName());
+		meta.setLore(lore);
+		
+		item.setItemMeta(meta);
+		
+		return item;
+	}
+	
+	private static ItemStack getHelpItem() {
+		ItemStack item = new ItemStack(Material.PAPER);
+		ItemMeta meta = item.getItemMeta();
+		
+		ArrayList<String> lore = new ArrayList<String>();
+		lore.add(" ");
+		lore.add("§7/group");
+		lore.add("§7- create");
+		lore.add("§7- invite <Spieler>");
+		lore.add("§7- list");
+		lore.add("§7- promote/leader <Spieler>");
+		lore.add("§7- msg <Message>");
+		lore.add("§7- leave");
+		lore.add("§7- accept/decline");
+		
+		meta.setDisplayName("§fHilfe");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);

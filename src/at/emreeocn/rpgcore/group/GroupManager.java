@@ -69,7 +69,7 @@ public class GroupManager {
 	
 	public static Player getPlayerByMemberItem(ItemStack item) {
 		if(item.getType() == Material.PLAYER_HEAD) {
-			String name = item.getItemMeta().getDisplayName().substring(1, item.getItemMeta().getDisplayName().length() - 1);
+			String name = item.getItemMeta().getDisplayName().substring(2, item.getItemMeta().getDisplayName().length());
 			System.out.println(name);
 			return Bukkit.getPlayer(name);
 		}

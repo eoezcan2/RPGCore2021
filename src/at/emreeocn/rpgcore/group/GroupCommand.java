@@ -6,6 +6,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import at.emreeocn.rpgcore.events.TaskFinishedEvent;
+import at.emreeocn.rpgcore.task.Task;
 import at.emreeocn.rpgcore.util.Config;
 
 public class GroupCommand implements CommandExecutor {
@@ -48,6 +50,8 @@ public class GroupCommand implements CommandExecutor {
 						
 						GroupManager.getInvites().get(player).join(player, true);
 						GroupManager.getInvites().remove(player);
+						new TaskFinishedEvent(GroupManager.getGroup(player).getLeader(), Task.MAKE_GROUP);
+						
 					} else {
 						player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu hast keine Einladung");
 					}
@@ -123,6 +127,32 @@ public class GroupCommand implements CommandExecutor {
 									
 								} else {
 									player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist schon Gruppenleiter");
+								}
+								
+							} else {
+								player.sendMessage(Config.getPrefix() + "§4Fehler: §cDieser Spieler ist nicht online");
+							}
+							
+						} else {
+							player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist nicht der Gruppenleiter");
+						}
+					} else {
+						player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist in keiner Gruppe");
+					}
+					return true;
+				}
+				
+				// KICK
+				if(args[0].equalsIgnoreCase("kick")) {
+					if(GroupManager.isInGroup(player)) {
+						if(GroupManager.isGroupLeader(player)) {
+							if(Bukkit.getPlayer(args[1]) != null) {
+								Player target = Bukkit.getPlayer(args[1]);
+								if(target != player) {
+									GroupManager.getGroup(player).kick(player);
+									
+								} else {
+									player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu kannst dich nicht selbst kicken");
 								}
 								
 							} else {

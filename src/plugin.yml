@@ -90,7 +90,7 @@ commands:
     permission: mephistogames.admin.mobs
   group:
     description: Group Command
-    usage: /group <create | invite | adminlist | list | accept | deny | leave | promote/leader>
+    usage: /group <create | invite | adminlist | list | accept | deny | leave | promote/leader | kick>
     aliases: [gruppe]
     permission: mephistogames.player.group
 
