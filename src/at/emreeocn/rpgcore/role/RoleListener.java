@@ -1,5 +1,7 @@
 package at.emreeocn.rpgcore.role;
 
-public class RoleListener {
+import org.bukkit.event.Listener;
+
+public class RoleListener implements Listener {
 
 }
