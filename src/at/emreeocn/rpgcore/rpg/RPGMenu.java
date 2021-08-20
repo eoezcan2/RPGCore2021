@@ -200,8 +200,8 @@ public class RPGMenu {
 
         ArrayList<String> lore = new ArrayList<>();
         lore.add("");
-        lore.add("§f– §2Website: §6" + website);
-        lore.add("§f– §2Discord: §6" + discord);
+        lore.add("§f- §2Website: §6" + website);
+        lore.add("§f- §2Discord: §6" + discord);
 
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName("§fInformationen");

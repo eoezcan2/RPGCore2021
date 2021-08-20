@@ -104,7 +104,9 @@ public class MenuListener implements Listener {
 								new Group(player);
 							
 						} else if(e.isRightClick()) {
-							GroupManager.accept(player);
+							if(GroupManager.hasInvitation(player))
+								if(!GroupManager.getInvites().get(player).getMembers().contains(player))
+									GroupManager.accept(player);
 						}
 						new GroupMenu(player).display(player);
 						break;
@@ -274,7 +276,7 @@ public class MenuListener implements Listener {
 							if(target != player) {
 								if(GroupManager.isInGroup(player)) {
 									if(GroupManager.isGroupLeader(player)) {
-										GroupManager.getGroup(player).kick(player);
+										GroupManager.getGroup(target).kick(target);
 										new GroupMenu(player).display(player);
 										
 									} else {
