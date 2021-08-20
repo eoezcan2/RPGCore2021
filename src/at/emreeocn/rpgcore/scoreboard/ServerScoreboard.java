@@ -39,9 +39,9 @@ public class ServerScoreboard {
 		
 		obj.getScore("§fCoins: §6§l" + Money.getMoney(player.getUniqueId())).setScore(9);
 		
-		obj.getScore("   ").setScore(9);
+		obj.getScore("   ").setScore(8);
 		
-		obj.getScore("§fRolle: §6§l" + RoleManager.getRole(player).getDisplayName()).setScore(8);
+		obj.getScore("§fRolle: §6§l" + RoleManager.getRole(player).getDisplayName()).setScore(7);
 	}
 	
 	public Scoreboard getScoreboard() {
