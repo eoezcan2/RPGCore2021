@@ -59,12 +59,32 @@ public class GroupManager {
 		groups.remove(group);
 	}
 	
+	public static void accept(Player player) {
+		if(isInGroup(player)) {
+			GroupManager.getGroup(player).leave(player);
+		}
+		invites.get(player).join(player, true);
+		invites.remove(player);
+	}
+	
+	public static void decline(Player player) {
+		invites.get(player).sendMessage("§6" + player.getDisplayName() + " §7hat die Einladung abgelehnt");
+		invites.remove(player);
+	}
+	
 	public static boolean sameGroup(Player player1, Player player2) {
 		for(Group g : groups) {
 			if(g.getMembers().contains(player1) && g.getMembers().contains(player2))
 				return true;
 		}
 		return false;
+	}
+	
+	public static boolean hasInvitation(Player player) {
+		if(invites.containsKey(player))
+			return true;
+		else
+			return false;
 	}
 	
 	public static Player getPlayerByMemberItem(ItemStack item) {

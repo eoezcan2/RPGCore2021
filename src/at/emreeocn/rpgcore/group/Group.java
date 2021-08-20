@@ -42,12 +42,17 @@ public class Group {
 	 * @param player player to invite
 	 */
 	public void invite(Player player) {
-		// ADD TO HASHMAP
-		GroupManager.getInvites().put(player, this);
-		
-		// SEND MESSAGE
-		sendMessage("§a" + player.getDisplayName() + " §7 wurde eingeladen");
-		player.sendMessage(msgPrefix + "§7Du wurdest von §a" + leader.getDisplayName() + " §7eingeladen");
+		if(!members.contains(player)) {
+			// ADD TO HASHMAP
+			GroupManager.getInvites().put(player, this);
+			
+			// SEND MESSAGE
+			sendMessage("§a" + player.getDisplayName() + " §7 wurde eingeladen");
+			player.sendMessage(msgPrefix + "§7Du wurdest von §a" + leader.getDisplayName() + " §7eingeladen");
+			
+		} else{
+			player.sendMessage(msgPrefix + "§4Fehler: §cDieser Spieler ist schon in deiner Gruppe");
+		}
 	}
 	
 	/**

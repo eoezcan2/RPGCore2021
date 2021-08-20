@@ -99,7 +99,13 @@ public class MenuListener implements Listener {
 						player.openInventory(Bukkit.createInventory(null, 9 * 6, "§9Trash"));
 						break;
 					case PLAYER_HEAD:
-						if(!GroupManager.isInGroup(player)) new Group(player);
+						if(e.isLeftClick()) {
+							if(!GroupManager.isInGroup(player))
+								new Group(player);
+							
+						} else if(e.isRightClick()) {
+							GroupManager.accept(player);
+						}
 						new GroupMenu(player).display(player);
 						break;
 					}
@@ -251,10 +257,11 @@ public class MenuListener implements Listener {
 					if(e.getCurrentItem().isSimilar(GroupMenu.getLeaveItem())) {
 						if(GroupManager.isInGroup(player)) {
 							GroupManager.getGroup(player).leave(player);
+							player.openInventory(new RPGMenu(player).getGui());
 						} else {
 							player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist in keiner Gruppe");
+							player.closeInventory();
 						}
-						player.closeInventory();
 					}
 					
 					if(e.getCurrentItem().isSimilar(GroupMenu.getReturnItem())) {

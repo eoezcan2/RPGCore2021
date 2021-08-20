@@ -328,7 +328,13 @@ public class RPGMenu {
         	lore.add("§7In einer Gruppe: §aJa");
         } else {
         	lore.add("§7In einer Gruppe: §cNein");
-        	lore.add("§7(Klicken zum Erstellen)");
+        	lore.add("§7(§6Linksklick §7zum Erstellen)");
+        }
+        
+        if(GroupManager.hasInvitation(player)) {
+        	lore.add(" ");
+        	lore.add("§7Einladung von: §a" + GroupManager.getInvites().get(player).getLeader().getDisplayName());
+        	lore.add("§7(§6Rechtsklick §7zum Annehmen)");
         }
 
         ItemMeta meta = item.getItemMeta();
