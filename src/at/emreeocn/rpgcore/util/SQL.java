@@ -32,6 +32,16 @@ public class SQL {
 	
 	public PreparedStatement prepareStatement(String query) {
 		PreparedStatement ps = null;
+		
+		try {
+			if (con.isClosed()) {
+				connect();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		try {
 			ps = con.prepareStatement(query);
 		} catch(SQLException ex) {
