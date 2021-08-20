@@ -3,6 +3,7 @@ package at.emreeocn.rpgcore.role;
 import java.util.ArrayList;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -44,6 +45,10 @@ public class RoleManager {
 		ItemStack item = ItemCreator.createGuiItem(Material.CHEST, "§fSchaden", lore);
 		
 		return item;
+	}
+	
+	public static Role getRole(Player player) {
+		return Role.ADVENTURER;
 	}
 	
 	@SuppressWarnings("deprecation")

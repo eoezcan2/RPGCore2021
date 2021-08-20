@@ -8,6 +8,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import at.emreeocn.rpgcore.role.RoleManager;
 import at.emreeocn.rpgcore.rpg.RPGMenu;
 import at.emreeocn.rpgcore.util.GUI;
 
@@ -46,7 +47,8 @@ public class GroupMenu extends GUI {
 		
 		ArrayList<String> lore = new ArrayList<String>();
 		lore.add(" ");
-		lore.add("§7Rolle: " + (leader ? "§2Gruppenleiter" : "§aMitglied"));
+		lore.add("§7Rang: " + (leader ? "§2Gruppenleiter" : "§aMitglied"));
+		lore.add("§7Rolle: §f" + RoleManager.getRole(player).getDisplayName());
 		
 		meta.setDisplayName("§f" + player.getDisplayName());
 		meta.setLore(lore);
