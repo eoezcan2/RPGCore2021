@@ -20,7 +20,7 @@ import at.emreeocn.rpgcore.util.PacketMethods;
 import at.emreeocn.rpgcore.dragonraid.DragonRaidManager;
 import at.emreeocn.rpgcore.farmworld.Farmworld;
 import at.emreeocn.rpgcore.playerinfo.PlayerInfoMenu;
-import at.emreeocn.rpgcore.rpg.RPG;
+import at.emreeocn.rpgcore.rpg.RPGManager;
 import at.emreeocn.rpgcore.rpg.RPGMenu;
 import at.emreeocn.rpgcore.scoreboard.ServerScoreboard;
 
@@ -37,7 +37,7 @@ public class RPGListener implements Listener {
 		if(Modify.canModify(e.getPlayer())) return;
 		
 		if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-			if(e.getPlayer().getInventory().getItemInHand() != null && e.getPlayer().getInventory().getItemInHand().isSimilar(RPG.getMenuItem())) {
+			if(e.getPlayer().getInventory().getItemInHand() != null && e.getPlayer().getInventory().getItemInHand().isSimilar(RPGManager.getMenuItem())) {
 				RPGMenu menu = new RPGMenu(e.getPlayer());
 				e.getPlayer().openInventory(menu.getGui());
 				e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.BLOCK_CHEST_OPEN, 8, 1);
@@ -60,7 +60,7 @@ public class RPGListener implements Listener {
 		if(e.getDamager() instanceof Player) {
 			if(Modify.canModify((Player) e.getDamager())) return;
 			
-			if(((Player) e.getDamager()).getInventory().getItemInMainHand().isSimilar(RPG.getMenuItem())) {
+			if(((Player) e.getDamager()).getInventory().getItemInMainHand().isSimilar(RPGManager.getMenuItem())) {
 				e.setCancelled(true);
 			}
 		}
@@ -70,7 +70,7 @@ public class RPGListener implements Listener {
 	public void onDrop(PlayerDropItemEvent e) {
 		if(Modify.canModify(e.getPlayer())) return;
 		
-		if(e.getItemDrop().getItemStack().isSimilar(RPG.getMenuItem())) {
+		if(e.getItemDrop().getItemStack().isSimilar(RPGManager.getMenuItem())) {
 			e.setCancelled(true);
 		}
 	}

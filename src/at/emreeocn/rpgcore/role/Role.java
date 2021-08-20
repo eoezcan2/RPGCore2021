@@ -4,6 +4,7 @@ import org.bukkit.inventory.ItemStack;
 
 public enum Role {
 
+	ADVENTURER("Abenteurer", 0, RoleManager.getAdventurerItem()),
 	TANK("Tank", 1, RoleManager.getTankItem()),
 	DAMAGEDEALER("Schaden", 3, RoleManager.getDamagerItem()),
 	HEALER("Healer", 1, RoleManager.getHealerItem());

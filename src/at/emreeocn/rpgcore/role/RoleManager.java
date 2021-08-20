@@ -18,7 +18,7 @@ public class RoleManager {
 	public static ItemStack getTankItem() {
 		ArrayList<String> lore = new ArrayList<String>();
 		lore.add("");
-		lore.add("§2Als Tank solltest du den meisten Schaden durchstehen, da die Gegner");
+		lore.add("§2Du solltest den meisten Schaden durchstehen, da die Gegner");
 		lore.add("§2auf dich fokussiert sind.");
 		
 		ItemStack item = ItemCreator.createGuiItem(Material.SHIELD, "§fTank", lore);
@@ -29,9 +29,19 @@ public class RoleManager {
 	public static ItemStack getDamagerItem() {
 		ArrayList<String> lore = new ArrayList<String>();
 		lore.add("");
-		lore.add("§2Sorge für viel Schaden an die Gegner");
+		lore.add("§2Sorge für viel Schaden an die Gegner.");
 		
 		ItemStack item = ItemCreator.createGuiItem(Material.IRON_SWORD, "§fSchaden", lore);
+		
+		return item;
+	}
+	
+	public static ItemStack getAdventurerItem() {
+		ArrayList<String> lore = new ArrayList<String>();
+		lore.add("");
+		lore.add("§2Du hast keine Bedingungen und bist unabhängig von einer Dungeon-Gruppe.");
+		
+		ItemStack item = ItemCreator.createGuiItem(Material.CHEST, "§fSchaden", lore);
 		
 		return item;
 	}
@@ -40,7 +50,7 @@ public class RoleManager {
 	public static ItemStack getHealerItem() {
 		ArrayList<String> lore = new ArrayList<String>();
 		lore.add("");
-		lore.add("§2Halte deine Gruppenmitglieder am Leben, indem du sie heilst");
+		lore.add("§2Halte deine Gruppenmitglieder am Leben, indem du sie heilst.");
 		
 		ItemStack item = new ItemStack(Material.POTION, 1, (byte) 16421);
 		ItemMeta meta = item.getItemMeta();

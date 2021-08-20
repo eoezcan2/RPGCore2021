@@ -26,7 +26,7 @@ import at.emreeocn.rpgcore.playerinfo.PlayerInfoMenu;
 import at.emreeocn.rpgcore.plotsurvive.PlotSurviveManager;
 import at.emreeocn.rpgcore.reward.RewardManager;
 import at.emreeocn.rpgcore.reward.RewardMenu;
-import at.emreeocn.rpgcore.rpg.RPG;
+import at.emreeocn.rpgcore.rpg.RPGManager;
 import at.emreeocn.rpgcore.rpg.RPGMenu;
 import at.emreeocn.rpgcore.shop.AdminShop;
 import at.emreeocn.rpgcore.skill.Skill;
@@ -220,7 +220,7 @@ public class MenuListener implements Listener {
 					e.setCancelled(true);
 				}
 				
-				if(e.getCurrentItem().isSimilar(RPG.getMenuItem())) {
+				if(e.getCurrentItem().isSimilar(RPGManager.getMenuItem())) {
 					e.setCancelled(true);
 					if(e.isRightClick()) {
 						RPGMenu menu = new RPGMenu(player);

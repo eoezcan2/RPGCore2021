@@ -23,7 +23,7 @@ import at.emreeocn.rpgcore.collection.Collection;
 import at.emreeocn.rpgcore.enderchest.Enderchest;
 import at.emreeocn.rpgcore.plotsurvive.PlotSurviveManager;
 import at.emreeocn.rpgcore.reward.RewardManager;
-import at.emreeocn.rpgcore.rpg.RPG;
+import at.emreeocn.rpgcore.rpg.RPGManager;
 import at.emreeocn.rpgcore.scoreboard.ServerScoreboard;
 import at.emreeocn.rpgcore.skill.Skill;
 
@@ -56,9 +56,9 @@ public class MainListener implements Listener {
 			player.sendMessage(Config.getPrefix() + "§cSpawn wurde noch nicht gesetzt!");
 		}
 		
-		if(!player.getInventory().contains(RPG.getMenuItem())) player.getInventory().setItem(8, RPG.getMenuItem());
+		if(!player.getInventory().contains(RPGManager.getMenuItem())) player.getInventory().setItem(8, RPGManager.getMenuItem());
 		
-		if(!RPG.isInSystem(player)) RPG.insert(player);
+		if(!RPGManager.isInSystem(player)) RPGManager.insert(player);
 		
 		if(!Collection.isInSystem(player)) Collection.insert(player);
 		

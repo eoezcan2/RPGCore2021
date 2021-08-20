@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import at.emreeocn.rpgcore.main.Main;
 
-public class RPG {
+public class RPGManager {
 	
 	public static ItemStack getMenuItem() {
 		ItemStack item = new ItemStack(Material.CLOCK);
