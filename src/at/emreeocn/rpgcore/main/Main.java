@@ -104,7 +104,7 @@ public class Main extends JavaPlugin {
 		getCommand("teleport").setExecutor(new TeleportCommand());
 		getCommand("teleportall").setExecutor(new TeleportAllCommand());
 		getCommand("teleportat").setExecutor(new TeleportAtCommand());
-		getCommand("vanish").setExecutor(new VanishCommand());
+//		getCommand("vanish").setExecutor(new VanishCommand());
 		getCommand("message").setExecutor(new MessageCommand());
 		getCommand("home").setExecutor(new HomeCommand());
 		getCommand("flyspeed").setExecutor(new FlyspeedCommand());
