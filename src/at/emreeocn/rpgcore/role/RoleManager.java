@@ -1,5 +1,7 @@
 package at.emreeocn.rpgcore.role;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.bukkit.Material;
@@ -7,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import at.emreeocn.rpgcore.main.Main;
 import at.emreeocn.rpgcore.util.ItemCreator;
 
 public class RoleManager {
@@ -14,6 +17,33 @@ public class RoleManager {
 	private static String table = "roles";
 
 	/* SQL METHODS */
+	public static boolean isInserted(Player player) {
+		ResultSet rs;
+		boolean b = false;
+		
+		try {
+			rs = Main.getMain().prepareStatement("SELECT COUNT(UUID) FROM " + table + " WHERE UUID = '" + player.getUniqueId().toString() + "';").executeQuery();
+			rs.next();
+			
+			if(rs.getInt(1) != 0) {
+				b = true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return b;
+	}
+	
+	public static void insert(Player player) { 
+		try {
+			Main.getMain().prepareStatement("INSERT INTO " + table + "(NAME, UUID, ROLE) VALUES('" + player.getDisplayName() + 
+					"', '" + player.getUniqueId().toString() + "', DEFAULT);").executeUpdate();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
 	
 	/* ITEMS */
 	public static ItemStack getTankItem() {
@@ -48,7 +78,19 @@ public class RoleManager {
 	}
 	
 	public static Role getRole(Player player) {
-		return Role.ADVENTURER;
+		ResultSet rs;
+		
+		try {
+			rs = Main.getMain().prepareStatement("SELECT COUNT(UUID) FROM " + table + " WHERE UUID = '" + player.getUniqueId().toString() + "';").executeQuery();
+			rs.next();
+			
+			return Role.getRoleByName(rs.getString("ROLE"));
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -68,5 +110,5 @@ public class RoleManager {
 	}
 	
 	public static String getTable() { return table; }
-	
+
 }

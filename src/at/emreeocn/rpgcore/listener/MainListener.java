@@ -14,18 +14,19 @@ import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
-import at.emreeocn.rpgcore.commands.VanishCommand;
-import at.emreeocn.rpgcore.main.Main;
-import at.emreeocn.rpgcore.util.Config;
-import at.emreeocn.rpgcore.util.Modify;
 import at.emreeocn.rpgcore.coin.Money;
 import at.emreeocn.rpgcore.collection.Collection;
+import at.emreeocn.rpgcore.commands.VanishCommand;
 import at.emreeocn.rpgcore.enderchest.Enderchest;
+import at.emreeocn.rpgcore.main.Main;
 import at.emreeocn.rpgcore.plotsurvive.PlotSurviveManager;
 import at.emreeocn.rpgcore.reward.RewardManager;
+import at.emreeocn.rpgcore.role.RoleManager;
 import at.emreeocn.rpgcore.rpg.RPGManager;
 import at.emreeocn.rpgcore.scoreboard.ServerScoreboard;
 import at.emreeocn.rpgcore.skill.Skill;
+import at.emreeocn.rpgcore.util.Config;
+import at.emreeocn.rpgcore.util.Modify;
 
 public class MainListener implements Listener {
 	
@@ -71,6 +72,8 @@ public class MainListener implements Listener {
 		if(!Money.existsSQL(player.getUniqueId())) Money.insertSQL(player.getUniqueId(), player.getDisplayName());
 		
 		if(!PlotSurviveManager.isInserted(player)) PlotSurviveManager.insert(player);
+		
+		if(!RoleManager.isInserted(player)) RoleManager.insert(player);
 		
 		if(!player.hasPlayedBefore()) {
 			player.sendMessage(Config.getPrefix() + "§cBitte betrete den Server neu!");

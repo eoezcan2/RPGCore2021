@@ -36,6 +36,8 @@ import at.emreeocn.rpgcore.listener.MainListener;
 import at.emreeocn.rpgcore.listener.MenuListener;
 import at.emreeocn.rpgcore.listener.RPGListener;
 import at.emreeocn.rpgcore.plotsurvive.PlotSurvivalListener;
+import at.emreeocn.rpgcore.role.Role;
+import at.emreeocn.rpgcore.role.RoleListener;
 import at.emreeocn.rpgcore.role.RoleManager;
 import at.emreeocn.rpgcore.util.Config;
 import at.emreeocn.rpgcore.util.PlayTime;
@@ -92,6 +94,7 @@ public class Main extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new MenuListener(), this);
 		Bukkit.getPluginManager().registerEvents(new PlotSurvivalListener(), this);
 		Bukkit.getPluginManager().registerEvents(new GroupListener(), this);
+		Bukkit.getPluginManager().registerEvents(new RoleListener(), this);
 		
 		/* Command */
 		getCommand("spawn").setExecutor(new SpawnCommand());
@@ -214,7 +217,7 @@ public class Main extends JavaPlugin {
 			prepareStatement("CREATE TABLE IF NOT EXISTS " + RoleManager.getTable() + "("
 					+ "	NAME VARCHAR(25) NOT NULL,"
 					+ "	UUID VARCHAR(36) NOT NULL,"
-					+ "	ROLE TEXT NOT NULL,"
+					+ "	ROLE TEXT NOT NULL DEFAULT " + Role.ADVENTURER.name() + ","
 					+ " PRIMARY KEY (UUID)"
 					+ ") ENGINE=InnoDB;").executeUpdate();
 			

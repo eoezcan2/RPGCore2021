@@ -44,7 +44,8 @@ public class RPGMenu {
     private ItemStack trashItem;
     private ItemStack plotSurvivalItem;
     private ItemStack homesItem;
-
+    private ItemStack roleSelectionItem;
+    
     private static String website = "X";
     private static String discord = "https://discord.gg/H9V92TY8Yp";
 
@@ -68,6 +69,7 @@ public class RPGMenu {
         createTrashItem();
         createPlotSurvivalItem();
         createHomesItem();
+        createRoleSelectionItem();
     }
 
     public Inventory getGui() {
@@ -157,6 +159,23 @@ public class RPGMenu {
         item.setItemMeta(meta);
 
         plotSurvivalItem = item;
+    }
+    
+    private void createRoleSelectionItem() {
+        ItemStack item = new ItemStack(Material.ENDER_PEARL);
+
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("");
+        lore.add("§2Wähle dir eine Rolle aus");
+
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("§fRollen");
+        meta.setLore(lore);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
+        item.setItemMeta(meta);
+
+        roleSelectionItem = item;
     }
 
     private void createEndItem() {
@@ -506,5 +525,9 @@ public class RPGMenu {
     public ItemStack getHomesItem() {
         return homesItem;
     }
+
+	public ItemStack getRoleSelectionItem() {
+		return roleSelectionItem;
+	}
 
 }

@@ -23,4 +23,11 @@ public enum Role {
 	public int getGroupMaxAmount() { return groupMaxAmount; }
 	public ItemStack getClickMaterial() { return clickItem; }
 	
+	public static Role getRoleByName(String name) {
+		for(Role r : Role.values()) {
+			if(r.name().equals(name)) return r;
+		}
+		return null;
+	}
+	
 }

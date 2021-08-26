@@ -8,6 +8,9 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import at.emreeocn.rpgcore.role.Role;
+import at.emreeocn.rpgcore.role.RoleManager;
+
 public class GroupManager {
 
 	private static HashMap<Player, Group> invites = new HashMap<Player, Group>();
@@ -103,6 +106,30 @@ public class GroupManager {
 			res.add(p.getDisplayName());
 		}
 		return res;
+	}
+	
+	public static int getAmountPlayerInRole(Group group, Role role) {
+		if(group != null && role != null) {
+			int counter = 0;
+			for(Player player : group.getMembers()) {
+				if(RoleManager.getRole(player) == role) counter++;
+			}
+			return counter;
+		}
+		return -1;
+	}
+	
+	public static boolean isGroupAllowedForDungeon(Group group) {
+		if(group != null) {
+			if(group.getMembers().size() == 5) {
+				int tank = getAmountPlayerInRole(group, Role.TANK);
+				int healer = getAmountPlayerInRole(group, Role.HEALER);
+				int dd = getAmountPlayerInRole(group, Role.DAMAGEDEALER);
+				
+				if(tank == 1 && healer == 1 && dd == 3) return true;
+			}
+		}
+		return false;
 	}
 	
 }
