@@ -25,7 +25,6 @@ import at.emreeocn.rpgcore.commands.TeleportAllCommand;
 import at.emreeocn.rpgcore.commands.TeleportAtCommand;
 import at.emreeocn.rpgcore.commands.TeleportCommand;
 import at.emreeocn.rpgcore.commands.TrashCommand;
-import at.emreeocn.rpgcore.commands.VanishCommand;
 import at.emreeocn.rpgcore.dungeon.DungeonManager;
 import at.emreeocn.rpgcore.farmworld.FarmworldListener;
 import at.emreeocn.rpgcore.group.GroupCommand;
