@@ -44,7 +44,8 @@ public class RPGMenu {
     private ItemStack trashItem;
     private ItemStack plotSurvivalItem;
     private ItemStack homesItem;
-
+    private ItemStack roleSelectionItem;
+    
     private static String website = "X";
     private static String discord = "https://discord.gg/H9V92TY8Yp";
 
@@ -68,10 +69,11 @@ public class RPGMenu {
         createTrashItem();
         createPlotSurvivalItem();
         createHomesItem();
+        createRoleSelectionItem();
     }
 
     public Inventory getGui() {
-        Inventory inv = Bukkit.createInventory(null, invSize, "§8RPG-Menü");
+        Inventory inv = Bukkit.createInventory(null, invSize, "§8Guide");
 
         inv.setItem(3 - 1, groupItem);
         inv.setItem(12 - 1, skillItem);
@@ -158,6 +160,23 @@ public class RPGMenu {
 
         plotSurvivalItem = item;
     }
+    
+    private void createRoleSelectionItem() {
+        ItemStack item = new ItemStack(Material.ENDER_PEARL);
+
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("");
+        lore.add("§2Wähle dir eine Rolle aus");
+
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("§fRollen");
+        meta.setLore(lore);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
+        item.setItemMeta(meta);
+
+        roleSelectionItem = item;
+    }
 
     private void createEndItem() {
         ItemStack item = new ItemStack(Material.END_STONE);
@@ -200,8 +219,8 @@ public class RPGMenu {
 
         ArrayList<String> lore = new ArrayList<>();
         lore.add("");
-        lore.add("§f– §2Website: §6" + website);
-        lore.add("§f– §2Discord: §6" + discord);
+        lore.add("§f- §2Website: §6" + website);
+        lore.add("§f- §2Discord: §6" + discord);
 
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName("§fInformationen");
@@ -328,7 +347,13 @@ public class RPGMenu {
         	lore.add("§7In einer Gruppe: §aJa");
         } else {
         	lore.add("§7In einer Gruppe: §cNein");
-        	lore.add("§7(Klicken zum Erstellen)");
+        	lore.add("§7(§6Linksklick §7zum Erstellen)");
+        }
+        
+        if(GroupManager.hasInvitation(player)) {
+        	lore.add(" ");
+        	lore.add("§7Einladung von: §a" + GroupManager.getInvites().get(player).getLeader().getDisplayName());
+        	lore.add("§7(§6Rechtsklick §7zum Annehmen)");
         }
 
         ItemMeta meta = item.getItemMeta();
@@ -500,5 +525,9 @@ public class RPGMenu {
     public ItemStack getHomesItem() {
         return homesItem;
     }
+
+	public ItemStack getRoleSelectionItem() {
+		return roleSelectionItem;
+	}
 
 }

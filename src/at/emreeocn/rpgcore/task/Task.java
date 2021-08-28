@@ -190,16 +190,16 @@ public enum Task {
 	public static ArrayList<String> rewardLores(Task task) {
 		ArrayList<String> lore = new ArrayList<String>();
 		
-		lore.add("§7– §e" + task.getReward().getCoins() + " Coins");
-		lore.add("§7– §e" + task.getReward().getSkillPoints() + "x Skillpunkt");
+		lore.add("§f- §e" + task.getReward().getCoins() + " Coins");
+		lore.add("§f- §e" + task.getReward().getSkillPoints() + "x Skillpunkt");
 		if(task.getReward().getItems() != null) {
 			for(ItemStack item : task.getReward().getItems()) {
-				lore.add("§7– §e" + item.getAmount() + "x " + item.getItemMeta().getDisplayName());
+				lore.add("§f- §e" + item.getAmount() + "x " + item.getItemMeta().getDisplayName());
 			}
 		}
 		if(task.getReward().getTexts() != null) {
 			for(String s : task.getReward().getTexts()) {
-				lore.add("§7– §e" + s);
+				lore.add("§f- §e" + s);
 			}
 		}
 		

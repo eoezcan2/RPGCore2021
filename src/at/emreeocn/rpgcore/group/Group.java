@@ -42,12 +42,17 @@ public class Group {
 	 * @param player player to invite
 	 */
 	public void invite(Player player) {
-		// ADD TO HASHMAP
-		GroupManager.getInvites().put(player, this);
-		
-		// SEND MESSAGE
-		sendMessage("§a" + player.getDisplayName() + " §7 wurde eingeladen");
-		player.sendMessage(msgPrefix + "§7Du wurdest von §a" + leader.getDisplayName() + " §7eingeladen");
+		if(!members.contains(player)) {
+			// ADD TO HASHMAP
+			GroupManager.getInvites().put(player, this);
+			
+			// SEND MESSAGE
+			sendMessage("§a" + player.getDisplayName() + " §7wurde eingeladen");
+			player.sendMessage(msgPrefix + "§7Du wurdest von §a" + leader.getDisplayName() + " §7eingeladen");
+			
+		} else{
+			player.sendMessage(msgPrefix + "§4Fehler: §cDieser Spieler ist schon in deiner Gruppe");
+		}
 	}
 	
 	/**
@@ -59,7 +64,7 @@ public class Group {
 		this.members.add(player);
 		// MESSAGE
 		if(invitation) {
-			sendMessage("§a" + player.getDisplayName() + " §7hat die Einladung angenommen eingeladen");
+			sendMessage("§a" + player.getDisplayName() + " §7hat die Einladung angenommen");
 		} else {
 			sendMessage("§a" + player.getDisplayName() + " §7ist der Gruppe beigetreten");
 		}
@@ -81,10 +86,18 @@ public class Group {
 	}
 	
 	public void kick(Player player) {
+		boolean isLeader = GroupManager.isGroupLeader(player);
+		
 		// MESSAGE
 		sendMessage("§a" + player.getDisplayName() + " §7wurde aus der Gruppe gekickt");
-
+		
 		this.members.remove(player);
+		
+		if(isLeader)
+			if(this.members.size() != 0)
+				setGroupLeader(this.members.get(0));
+			else
+				dissolve();
 	}
 	
 	/**

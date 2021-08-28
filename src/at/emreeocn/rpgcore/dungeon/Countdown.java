@@ -27,12 +27,12 @@ public class Countdown extends BukkitRunnable {
 			raid.start();
 		}
 		
-		else if(seconds % 30 == 0 || seconds <= 5) {
+		else if(seconds % 30 == 0 || seconds <= 10) {
 			if(seconds == 1) {
-				raid.sendMessage("§aRaid startet in §6einer Sekunde");
+				raid.sendMessage("§aDungeon startet in §6einer Sekunde");
 				
 			} else {
-				raid.sendMessage("§aRaid startet in §6" + seconds + " Sekunden");
+				raid.sendMessage("§aDungeon startet in §6" + seconds + " Sekunden");
 			}
 		}
 		

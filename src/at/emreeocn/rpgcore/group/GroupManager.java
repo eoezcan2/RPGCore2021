@@ -8,6 +8,9 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import at.emreeocn.rpgcore.role.Role;
+import at.emreeocn.rpgcore.role.RoleManager;
+
 public class GroupManager {
 
 	private static HashMap<Player, Group> invites = new HashMap<Player, Group>();
@@ -59,12 +62,32 @@ public class GroupManager {
 		groups.remove(group);
 	}
 	
+	public static void accept(Player player) {
+		if(isInGroup(player)) {
+			GroupManager.getGroup(player).leave(player);
+		}
+		invites.get(player).join(player, true);
+		invites.remove(player);
+	}
+	
+	public static void decline(Player player) {
+		invites.get(player).sendMessage("§6" + player.getDisplayName() + " §7hat die Einladung abgelehnt");
+		invites.remove(player);
+	}
+	
 	public static boolean sameGroup(Player player1, Player player2) {
 		for(Group g : groups) {
 			if(g.getMembers().contains(player1) && g.getMembers().contains(player2))
 				return true;
 		}
 		return false;
+	}
+	
+	public static boolean hasInvitation(Player player) {
+		if(invites.containsKey(player))
+			return true;
+		else
+			return false;
 	}
 	
 	public static Player getPlayerByMemberItem(ItemStack item) {
@@ -83,6 +106,30 @@ public class GroupManager {
 			res.add(p.getDisplayName());
 		}
 		return res;
+	}
+	
+	public static int getAmountPlayerInRole(Group group, Role role) {
+		if(group != null && role != null) {
+			int counter = 0;
+			for(Player player : group.getMembers()) {
+				if(RoleManager.getRole(player) == role) counter++;
+			}
+			return counter;
+		}
+		return -1;
+	}
+	
+	public static boolean isGroupAllowedForDungeon(Group group) {
+		if(group != null) {
+			if(group.getMembers().size() == 5) {
+				int tank = getAmountPlayerInRole(group, Role.TANK);
+				int healer = getAmountPlayerInRole(group, Role.HEALER);
+				int dd = getAmountPlayerInRole(group, Role.DAMAGEDEALER);
+				
+				if(tank == 1 && healer == 1 && dd == 3) return true;
+			}
+		}
+		return false;
 	}
 	
 }

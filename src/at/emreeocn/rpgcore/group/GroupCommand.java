@@ -45,11 +45,7 @@ public class GroupCommand implements CommandExecutor {
 				// ACCEPT
 				if(args[0].equalsIgnoreCase("accept")) {
 					if(GroupManager.getInvites().containsKey(player)) {
-						if(GroupManager.isInGroup(player))
-							GroupManager.getGroup(player).leave(player);
-						
-						GroupManager.getInvites().get(player).join(player, true);
-						GroupManager.getInvites().remove(player);
+						GroupManager.accept(player);
 						new TaskFinishedEvent(GroupManager.getGroup(player).getLeader(), Task.MAKE_GROUP);
 						
 					} else {
@@ -61,8 +57,8 @@ public class GroupCommand implements CommandExecutor {
 				// DECLINE
 				if(args[0].equalsIgnoreCase("decline")) {
 					if(GroupManager.getInvites().containsKey(player)) {
-						GroupManager.getInvites().get(player).sendMessage("§6" + player.getDisplayName() + " §7hat die Einladung abgelehnt");
-						GroupManager.getInvites().remove(player);
+						GroupManager.decline(player);
+						
 					} else {
 						player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu hast keine Einladung");
 					}

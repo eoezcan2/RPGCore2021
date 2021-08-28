@@ -26,7 +26,7 @@ import at.emreeocn.rpgcore.playerinfo.PlayerInfoMenu;
 import at.emreeocn.rpgcore.plotsurvive.PlotSurviveManager;
 import at.emreeocn.rpgcore.reward.RewardManager;
 import at.emreeocn.rpgcore.reward.RewardMenu;
-import at.emreeocn.rpgcore.rpg.RPG;
+import at.emreeocn.rpgcore.rpg.RPGManager;
 import at.emreeocn.rpgcore.rpg.RPGMenu;
 import at.emreeocn.rpgcore.shop.AdminShop;
 import at.emreeocn.rpgcore.skill.Skill;
@@ -99,7 +99,15 @@ public class MenuListener implements Listener {
 						player.openInventory(Bukkit.createInventory(null, 9 * 6, "§9Trash"));
 						break;
 					case PLAYER_HEAD:
-						if(!GroupManager.isInGroup(player)) new Group(player);
+						if(e.isLeftClick()) {
+							if(!GroupManager.isInGroup(player))
+								new Group(player);
+							
+						} else if(e.isRightClick()) {
+							if(GroupManager.hasInvitation(player))
+								if(!GroupManager.getInvites().get(player).getMembers().contains(player))
+									GroupManager.accept(player);
+						}
 						new GroupMenu(player).display(player);
 						break;
 					}
@@ -214,7 +222,7 @@ public class MenuListener implements Listener {
 					e.setCancelled(true);
 				}
 				
-				if(e.getCurrentItem().isSimilar(RPG.getMenuItem())) {
+				if(e.getCurrentItem().isSimilar(RPGManager.getMenuItem())) {
 					e.setCancelled(true);
 					if(e.isRightClick()) {
 						RPGMenu menu = new RPGMenu(player);
@@ -251,10 +259,11 @@ public class MenuListener implements Listener {
 					if(e.getCurrentItem().isSimilar(GroupMenu.getLeaveItem())) {
 						if(GroupManager.isInGroup(player)) {
 							GroupManager.getGroup(player).leave(player);
+							player.openInventory(new RPGMenu(player).getGui());
 						} else {
 							player.sendMessage(Config.getPrefix() + "§4Fehler: §cDu bist in keiner Gruppe");
+							player.closeInventory();
 						}
-						player.closeInventory();
 					}
 					
 					if(e.getCurrentItem().isSimilar(GroupMenu.getReturnItem())) {
@@ -267,7 +276,7 @@ public class MenuListener implements Listener {
 							if(target != player) {
 								if(GroupManager.isInGroup(player)) {
 									if(GroupManager.isGroupLeader(player)) {
-										GroupManager.getGroup(player).kick(player);
+										GroupManager.getGroup(target).kick(target);
 										new GroupMenu(player).display(player);
 										
 									} else {

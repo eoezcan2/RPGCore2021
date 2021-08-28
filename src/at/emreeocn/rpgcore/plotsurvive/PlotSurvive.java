@@ -43,7 +43,6 @@ public class PlotSurvive {
 		PlotSurviveManager.getList().remove(this);
 		killMobs();
 		new TaskFinishedEvent(player, Task.PLAY_PLOTSURVIVE);
-		spawnMobs(); // Mobs spawn fix
 	}
 	
 	public void won() {

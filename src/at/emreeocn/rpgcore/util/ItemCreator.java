@@ -3,6 +3,7 @@ package at.emreeocn.rpgcore.util;
 import java.util.List;
 
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -14,6 +15,9 @@ public class ItemCreator {
 		ItemMeta meta = item.getItemMeta();
 		meta.setLore(lore);
 		meta.setDisplayName(displayName);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
 		
 		item.setItemMeta(meta);
 		
@@ -50,6 +54,9 @@ public class ItemCreator {
 		ItemMeta meta = item.getItemMeta();
 		meta.setLore(lore);
 		meta.setDisplayName(displayName);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
 		
 		item.setItemMeta(meta);
 		

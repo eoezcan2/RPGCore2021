@@ -11,6 +11,7 @@ import org.bukkit.scoreboard.Scoreboard;
 
 import at.emreeocn.rpgcore.coin.Money;
 import at.emreeocn.rpgcore.farmworld.Farmworld;
+import at.emreeocn.rpgcore.role.RoleManager;
 import at.emreeocn.rpgcore.util.Config;
 
 public class ServerScoreboard {
@@ -36,7 +37,11 @@ public class ServerScoreboard {
 		
 		obj.getScore("  ").setScore(10);
 		
-		obj.getScore("§fCoins:§r §6§l" + Money.getMoney(player.getUniqueId())).setScore(9);
+		obj.getScore("§fCoins: §6§l" + Money.getMoney(player.getUniqueId())).setScore(9);
+		
+		obj.getScore("   ").setScore(8);
+		
+		obj.getScore("§fRolle: §6§l" + RoleManager.getRole(player).getDisplayName()).setScore(7);
 	}
 	
 	public Scoreboard getScoreboard() {
