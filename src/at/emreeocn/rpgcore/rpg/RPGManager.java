@@ -14,13 +14,13 @@ import at.emreeocn.rpgcore.main.Main;
 public class RPGManager {
 	
 	public static ItemStack getMenuItem() {
-		ItemStack item = new ItemStack(Material.CLOCK);
+		ItemStack item = new ItemStack(Material.COMPASS);
 		
 		ArrayList<String> lore = new ArrayList<>();
-		lore.add("§2Öffne das Menü");
+		lore.add("§2Öffne den Guide");
 		
 		ItemMeta meta = item.getItemMeta();
-		meta.setDisplayName("§6RPG-Menü");
+		meta.setDisplayName("§6Guide");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);

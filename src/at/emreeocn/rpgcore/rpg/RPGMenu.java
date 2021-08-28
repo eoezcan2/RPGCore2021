@@ -73,7 +73,7 @@ public class RPGMenu {
     }
 
     public Inventory getGui() {
-        Inventory inv = Bukkit.createInventory(null, invSize, "§8RPG-Menü");
+        Inventory inv = Bukkit.createInventory(null, invSize, "§8Guide");
 
         inv.setItem(3 - 1, groupItem);
         inv.setItem(12 - 1, skillItem);
